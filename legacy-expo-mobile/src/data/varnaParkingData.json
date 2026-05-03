@@ -1,0 +1,159 @@
+{
+  "city": {
+    "name": "Varna",
+    "country": "Bulgaria",
+    "center": {
+      "latitude": 43.2141,
+      "longitude": 27.9147,
+      "latitudeDelta": 0.045,
+      "longitudeDelta": 0.035
+    }
+  },
+  "zones": [
+    {
+      "id": "blue-zone-center",
+      "name": "Blue Zone - City Center",
+      "kind": "paid",
+      "priceLabel": "1 BGN / hour",
+      "description": "Mock boundary around Varna's central paid parking area.",
+      "coordinates": [
+        { "latitude": 43.2092, "longitude": 27.9093 },
+        { "latitude": 43.2098, "longitude": 27.9208 },
+        { "latitude": 43.2164, "longitude": 27.923 },
+        { "latitude": 43.2191, "longitude": 27.9142 },
+        { "latitude": 43.2156, "longitude": 27.9068 }
+      ]
+    },
+    {
+      "id": "blue-zone-sea-garden",
+      "name": "Blue Zone - Sea Garden Edge",
+      "kind": "paid",
+      "priceLabel": "1 BGN / hour",
+      "description": "Mock paid zone near the Sea Garden approaches.",
+      "coordinates": [
+        { "latitude": 43.2072, "longitude": 27.922 },
+        { "latitude": 43.2094, "longitude": 27.9302 },
+        { "latitude": 43.2153, "longitude": 27.9322 },
+        { "latitude": 43.2166, "longitude": 27.9246 },
+        { "latitude": 43.2116, "longitude": 27.9209 }
+      ]
+    },
+    {
+      "id": "restricted-port",
+      "name": "Restricted - Port Access",
+      "kind": "restricted",
+      "priceLabel": "No public parking",
+      "description": "Mock restricted area around port and service access roads.",
+      "coordinates": [
+        { "latitude": 43.1989, "longitude": 27.9135 },
+        { "latitude": 43.2016, "longitude": 27.9246 },
+        { "latitude": 43.2068, "longitude": 27.9224 },
+        { "latitude": 43.2052, "longitude": 27.912 },
+        { "latitude": 43.2011, "longitude": 27.9097 }
+      ]
+    }
+  ],
+  "spots": [
+    {
+      "id": "spot-cathedral-1",
+      "name": "Cathedral Side Street",
+      "latitude": 43.2079,
+      "longitude": 27.9143,
+      "status": "free",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": 7,
+      "updatedAt": "2026-04-28T08:30:00+03:00"
+    },
+    {
+      "id": "spot-municipality-1",
+      "name": "Municipality Square",
+      "latitude": 43.2057,
+      "longitude": 27.9106,
+      "status": "full",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": 0,
+      "updatedAt": "2026-04-28T08:25:00+03:00"
+    },
+    {
+      "id": "spot-opera-1",
+      "name": "Opera House Block",
+      "latitude": 43.2029,
+      "longitude": 27.9167,
+      "status": "unknown",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": null,
+      "updatedAt": "2026-04-28T07:50:00+03:00"
+    },
+    {
+      "id": "spot-sea-garden-1",
+      "name": "Sea Garden Entrance",
+      "latitude": 43.2087,
+      "longitude": 27.929,
+      "status": "free",
+      "type": "paid",
+      "zoneId": "blue-zone-sea-garden",
+      "spaces": 4,
+      "updatedAt": "2026-04-28T08:32:00+03:00"
+    },
+    {
+      "id": "spot-aquarium-1",
+      "name": "Aquarium Area",
+      "latitude": 43.2032,
+      "longitude": 27.9254,
+      "status": "full",
+      "type": "paid",
+      "zoneId": "blue-zone-sea-garden",
+      "spaces": 0,
+      "updatedAt": "2026-04-28T08:12:00+03:00"
+    },
+    {
+      "id": "spot-railway-1",
+      "name": "Railway Station",
+      "latitude": 43.1992,
+      "longitude": 27.9112,
+      "status": "unknown",
+      "type": "free",
+      "zoneId": null,
+      "spaces": null,
+      "updatedAt": "2026-04-28T07:40:00+03:00"
+    },
+    {
+      "id": "spot-market-1",
+      "name": "Kolhozen Market",
+      "latitude": 43.2188,
+      "longitude": 27.9032,
+      "status": "free",
+      "type": "free",
+      "zoneId": null,
+      "spaces": 9,
+      "updatedAt": "2026-04-28T08:18:00+03:00"
+    },
+    {
+      "id": "spot-port-1",
+      "name": "Port Service Gate",
+      "latitude": 43.2021,
+      "longitude": 27.9186,
+      "status": "unknown",
+      "type": "restricted",
+      "zoneId": "restricted-port",
+      "spaces": null,
+      "updatedAt": "2026-04-28T08:00:00+03:00"
+    }
+  ],
+  "restrictedAreas": [
+    {
+      "id": "no-parking-pedestrian",
+      "name": "Pedestrian Core",
+      "reason": "Pedestrian priority streets",
+      "coordinates": [
+        { "latitude": 43.2036, "longitude": 27.9168 },
+        { "latitude": 43.2052, "longitude": 27.9222 },
+        { "latitude": 43.2091, "longitude": 27.9203 },
+        { "latitude": 43.2075, "longitude": 27.9152 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Varna Parking",
+    "slug": "varna-parking",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#f8fafc"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.varnaparking.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Varna Parking uses your location to find nearby parking spots in Varna."
+      }
+    },
+    "android": {
+      "package": "com.varnaparking.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#0f766e"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Varna Parking uses your location to find nearby parking spots in Varna."
+        }
+      ]
+    ]
+  }
+}

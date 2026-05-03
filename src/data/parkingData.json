@@ -1,0 +1,190 @@
+{
+  "city": {
+    "name": "Varna",
+    "country": "Bulgaria",
+    "center": [43.2141, 27.9147],
+    "zoom": 14
+  },
+  "zones": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "blue-zone-center",
+          "name": "Blue Zone - Center",
+          "kind": "paid",
+          "priceLabel": "1 BGN / hour"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [27.9068, 43.2156],
+              [27.9093, 43.2092],
+              [27.9208, 43.2098],
+              [27.923, 43.2164],
+              [27.9142, 43.2191],
+              [27.9068, 43.2156]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "blue-zone-sea-garden",
+          "name": "Blue Zone - Sea Garden Edge",
+          "kind": "paid",
+          "priceLabel": "1 BGN / hour"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [27.9209, 43.2116],
+              [27.922, 43.2072],
+              [27.9302, 43.2094],
+              [27.9322, 43.2153],
+              [27.9246, 43.2166],
+              [27.9209, 43.2116]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "restricted-port",
+          "name": "Restricted - Port Access",
+          "kind": "restricted",
+          "priceLabel": "No public parking"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [27.9097, 43.2011],
+              [27.9135, 43.1989],
+              [27.9246, 43.2016],
+              [27.9224, 43.2068],
+              [27.912, 43.2052],
+              [27.9097, 43.2011]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "restricted-pedestrian-core",
+          "name": "Restricted - Pedestrian Core",
+          "kind": "restricted",
+          "priceLabel": "Pedestrian priority"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [27.9152, 43.2075],
+              [27.9168, 43.2036],
+              [27.9222, 43.2052],
+              [27.9203, 43.2091],
+              [27.9152, 43.2075]
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "spots": [
+    {
+      "id": "spot-cathedral",
+      "name": "Cathedral Side Street",
+      "lat": 43.2079,
+      "lng": 27.9143,
+      "status": "free",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": 7,
+      "updatedAt": "2026-04-28T08:30:00+03:00"
+    },
+    {
+      "id": "spot-municipality",
+      "name": "Municipality Square",
+      "lat": 43.2057,
+      "lng": 27.9106,
+      "status": "occupied",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": 0,
+      "updatedAt": "2026-04-28T08:25:00+03:00"
+    },
+    {
+      "id": "spot-opera",
+      "name": "Opera House Block",
+      "lat": 43.2029,
+      "lng": 27.9167,
+      "status": "unknown",
+      "type": "paid",
+      "zoneId": "blue-zone-center",
+      "spaces": null,
+      "updatedAt": "2026-04-28T07:50:00+03:00"
+    },
+    {
+      "id": "spot-sea-garden",
+      "name": "Sea Garden Entrance",
+      "lat": 43.2087,
+      "lng": 27.929,
+      "status": "free",
+      "type": "paid",
+      "zoneId": "blue-zone-sea-garden",
+      "spaces": 4,
+      "updatedAt": "2026-04-28T08:32:00+03:00"
+    },
+    {
+      "id": "spot-aquarium",
+      "name": "Aquarium Area",
+      "lat": 43.2032,
+      "lng": 27.9254,
+      "status": "occupied",
+      "type": "paid",
+      "zoneId": "blue-zone-sea-garden",
+      "spaces": 0,
+      "updatedAt": "2026-04-28T08:12:00+03:00"
+    },
+    {
+      "id": "spot-railway",
+      "name": "Railway Station",
+      "lat": 43.1992,
+      "lng": 27.9112,
+      "status": "unknown",
+      "type": "free",
+      "zoneId": null,
+      "spaces": null,
+      "updatedAt": "2026-04-28T07:40:00+03:00"
+    },
+    {
+      "id": "spot-market",
+      "name": "Kolhozen Market",
+      "lat": 43.2188,
+      "lng": 27.9032,
+      "status": "free",
+      "type": "free",
+      "zoneId": null,
+      "spaces": 9,
+      "updatedAt": "2026-04-28T08:18:00+03:00"
+    },
+    {
+      "id": "spot-port-gate",
+      "name": "Port Service Gate",
+      "lat": 43.2021,
+      "lng": 27.9186,
+      "status": "unknown",
+      "type": "restricted",
+      "zoneId": "restricted-port",
+      "spaces": null,
+      "updatedAt": "2026-04-28T08:00:00+03:00"
+    }
+  ]
+}

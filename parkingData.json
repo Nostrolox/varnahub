@@ -1,0 +1,95 @@
+{
+  "zones": [
+    {
+      "id": "blue-central",
+      "name": "Central Blue Zone",
+      "type": "paid",
+      "price_per_hour": 1,
+      "currency": "BGN",
+      "sms_number": "1352",
+      "sms_format": "BLUE {PLATE}",
+      "coordinates": [
+        [43.204, 27.91],
+        [43.205, 27.915],
+        [43.2, 27.92],
+        [43.197, 27.913]
+      ],
+      "active_hours": "09:00-20:00"
+    },
+    {
+      "id": "blue-sea-garden",
+      "name": "Sea Garden Blue Zone",
+      "type": "paid",
+      "price_per_hour": 1,
+      "currency": "BGN",
+      "sms_number": "1352",
+      "sms_format": "BLUE {PLATE}",
+      "coordinates": [
+        [43.207, 27.922],
+        [43.213, 27.927],
+        [43.211, 27.936],
+        [43.205, 27.933]
+      ],
+      "active_hours": "09:00-20:00"
+    },
+    {
+      "id": "blue-cathedral",
+      "name": "Cathedral Blue Zone",
+      "type": "paid",
+      "price_per_hour": 1,
+      "currency": "BGN",
+      "sms_number": "1352",
+      "sms_format": "BLUE {PLATE}",
+      "coordinates": [
+        [43.215, 27.905],
+        [43.221, 27.908],
+        [43.219, 27.916],
+        [43.214, 27.912]
+      ],
+      "active_hours": "09:00-20:00"
+    }
+  ],
+  "free_parking": [
+    {
+      "id": "free-1",
+      "name": "Free Parking Area",
+      "lat": 43.21,
+      "lng": 27.92,
+      "spots": 20
+    },
+    {
+      "id": "free-2",
+      "name": "Kolhozen Pazar Side Streets",
+      "lat": 43.219,
+      "lng": 27.895,
+      "spots": 12
+    },
+    {
+      "id": "free-3",
+      "name": "Mall Varna Area",
+      "lat": 43.232,
+      "lng": 27.884,
+      "spots": 35
+    }
+  ],
+  "no_parking": [
+    {
+      "id": "np-1",
+      "lat": 43.198,
+      "lng": 27.915,
+      "reason": "Restricted zone"
+    },
+    {
+      "id": "np-2",
+      "lat": 43.216,
+      "lng": 27.914,
+      "reason": "Bus and taxi access"
+    },
+    {
+      "id": "np-3",
+      "lat": 43.208,
+      "lng": 27.919,
+      "reason": "Pedestrian crossing"
+    }
+  ]
+}

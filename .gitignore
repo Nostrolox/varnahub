@@ -1,0 +1,8 @@
+node_modules/
+.expo/
+dist/
+.env
+npm-debug.log*
+dev-*.log
+vite-dev*.log
+*.log

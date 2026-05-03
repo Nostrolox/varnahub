@@ -1,0 +1,25 @@
+{
+  "appId": "com.varnaparking.app",
+  "appName": "Varna Parking",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 800,
+      "backgroundColor": "#020617",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_varna_parking",
+      "iconColor": "#16A34A"
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#020617"
+    }
+  }
+}

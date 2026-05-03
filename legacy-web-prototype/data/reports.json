@@ -1,0 +1,100 @@
+{
+  "reports": [
+    {
+      "id": "3f14ca4a-38bf-4289-8068-7a7f754f7480",
+      "user_id": "seed",
+      "title": "Deep pothole near Sea Garden",
+      "description": "Cars are swerving around it during the evening rush.",
+      "category": "Pothole",
+      "latitude": 43.2141,
+      "longitude": 27.9244,
+      "image_url": "data:image/svg+xml;charset=utf-8,%0A%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20900%20620%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23d9573f%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f2c14e%22%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3Cfilter%20id%3D%22grain%22%3E%0A%20%20%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%22.15%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%20%20%3CfeFuncA%20type%3D%22table%22%20tableValues%3D%220%20.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20filter%3D%22url(%23grain)%22%20opacity%3D%22.35%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%20406%20C146%20356%20252%20451%20391%20388%20C520%20329%20641%20348%20900%20256%20L900%20620%20L0%20620%20Z%22%20fill%3D%22%23e8eef0%22%20opacity%3D%22.84%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M62%20446%20C242%20402%20329%20473%20500%20414%20C642%20365%20745%20382%20900%20318%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%2220%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.38%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22212%22%20cy%3D%22238%22%20r%3D%2270%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.86%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M212%20126%20L245%20207%20L333%20214%20L266%20270%20L286%20356%20L212%20310%20L138%20356%20L158%20270%20L91%20214%20L179%20207%20Z%22%20fill%3D%22%23111827%22%20opacity%3D%22.72%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22450%22%20y%3D%22545%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EPothole%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "status": "reported",
+      "votes": [
+        "seed-a",
+        "seed-b",
+        "seed-c",
+        "seed-d",
+        "seed-e",
+        "seed-f",
+        "seed-g"
+      ],
+      "comments": [
+        {
+          "id": "04730d63-37bd-4410-8cc7-8aefedc47382",
+          "user_id": "seed-b",
+          "body": "This has been getting worse after the rain.",
+          "created_at": "2026-04-19T19:12:16.971Z"
+        }
+      ],
+      "created_at": "2026-04-19T18:58:16.971Z",
+      "updated_at": "2026-04-19T18:58:16.971Z"
+    },
+    {
+      "id": "5825f095-6a42-4a57-8542-2f2d53c50fa3",
+      "user_id": "seed",
+      "title": "Overflowing bins in Asparuhovo",
+      "description": "Trash is spreading onto the sidewalk next to the stop.",
+      "category": "Garbage",
+      "latitude": 43.1829,
+      "longitude": 27.8996,
+      "image_url": "data:image/svg+xml;charset=utf-8,%0A%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20900%20620%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232e8f7b%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23f4d35e%22%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3Cfilter%20id%3D%22grain%22%3E%0A%20%20%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%22.15%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%20%20%3CfeFuncA%20type%3D%22table%22%20tableValues%3D%220%20.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20filter%3D%22url(%23grain)%22%20opacity%3D%22.35%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%20406%20C146%20356%20252%20451%20391%20388%20C520%20329%20641%20348%20900%20256%20L900%20620%20L0%20620%20Z%22%20fill%3D%22%23e8eef0%22%20opacity%3D%22.84%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M62%20446%20C242%20402%20329%20473%20500%20414%20C642%20365%20745%20382%20900%20318%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%2220%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.38%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22212%22%20cy%3D%22238%22%20r%3D%2270%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.86%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M212%20126%20L245%20207%20L333%20214%20L266%20270%20L286%20356%20L212%20310%20L138%20356%20L158%20270%20L91%20214%20L179%20207%20Z%22%20fill%3D%22%23111827%22%20opacity%3D%22.72%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22450%22%20y%3D%22545%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EGarbage%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "status": "seen",
+      "votes": [
+        "seed-a",
+        "seed-b",
+        "seed-c",
+        "seed-d"
+      ],
+      "comments": [],
+      "created_at": "2026-04-19T15:53:16.971Z",
+      "updated_at": "2026-04-19T16:53:16.971Z"
+    },
+    {
+      "id": "af90eea3-f271-429a-97b8-69ed779d4479",
+      "user_id": "seed",
+      "title": "Streetlight out on Vladislav",
+      "description": "The crosswalk is too dark after 20:00.",
+      "category": "Streetlight",
+      "latitude": 43.2333,
+      "longitude": 27.8729,
+      "image_url": "data:image/svg+xml;charset=utf-8,%0A%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20900%20620%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23324a5f%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd166%22%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3Cfilter%20id%3D%22grain%22%3E%0A%20%20%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%22.15%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%20%20%3CfeFuncA%20type%3D%22table%22%20tableValues%3D%220%20.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20filter%3D%22url(%23grain)%22%20opacity%3D%22.35%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%20406%20C146%20356%20252%20451%20391%20388%20C520%20329%20641%20348%20900%20256%20L900%20620%20L0%20620%20Z%22%20fill%3D%22%23e8eef0%22%20opacity%3D%22.84%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M62%20446%20C242%20402%20329%20473%20500%20414%20C642%20365%20745%20382%20900%20318%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%2220%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.38%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22212%22%20cy%3D%22238%22%20r%3D%2270%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.86%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M212%20126%20L245%20207%20L333%20214%20L266%20270%20L286%20356%20L212%20310%20L138%20356%20L158%20270%20L91%20214%20L179%20207%20Z%22%20fill%3D%22%23111827%22%20opacity%3D%22.72%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22450%22%20y%3D%22545%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EStreetlight%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "status": "in_progress",
+      "votes": [
+        "seed-a",
+        "seed-b",
+        "seed-c",
+        "seed-d",
+        "seed-e"
+      ],
+      "comments": [
+        {
+          "id": "06c57777-bd42-485a-93b7-a5bda160db79",
+          "user_id": "seed-c",
+          "body": "Reported this last week too. Glad it is marked in progress.",
+          "created_at": "2026-04-19T18:24:16.971Z"
+        }
+      ],
+      "created_at": "2026-04-19T12:53:16.971Z",
+      "updated_at": "2026-04-19T17:53:16.971Z"
+    },
+    {
+      "id": "ae1d1556-9dc4-4790-8da0-112f7b688df1",
+      "user_id": "seed",
+      "title": "Graffiti cleaned near Cathedral",
+      "description": "Wall is clear again.",
+      "category": "Graffiti",
+      "latitude": 43.2047,
+      "longitude": 27.9134,
+      "image_url": "data:image/svg+xml;charset=utf-8,%0A%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20900%20620%22%3E%0A%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237c5c9f%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234ecdc4%22%2F%3E%0A%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3Cfilter%20id%3D%22grain%22%3E%0A%20%20%20%20%20%20%20%20%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%22.9%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%22.15%22%2F%3E%0A%20%20%20%20%20%20%20%20%3CfeComponentTransfer%3E%0A%20%20%20%20%20%20%20%20%20%20%3CfeFuncA%20type%3D%22table%22%20tableValues%3D%220%20.18%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FfeComponentTransfer%3E%0A%20%20%20%20%20%20%3C%2Ffilter%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20fill%3D%22url(%23g)%22%2F%3E%0A%20%20%20%20%3Crect%20width%3D%22900%22%20height%3D%22620%22%20filter%3D%22url(%23grain)%22%20opacity%3D%22.35%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%20406%20C146%20356%20252%20451%20391%20388%20C520%20329%20641%20348%20900%20256%20L900%20620%20L0%20620%20Z%22%20fill%3D%22%23e8eef0%22%20opacity%3D%22.84%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M62%20446%20C242%20402%20329%20473%20500%20414%20C642%20365%20745%20382%20900%20318%22%20fill%3D%22none%22%20stroke%3D%22%23334155%22%20stroke-width%3D%2220%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.38%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22212%22%20cy%3D%22238%22%20r%3D%2270%22%20fill%3D%22%23ffffff%22%20opacity%3D%22.86%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M212%20126%20L245%20207%20L333%20214%20L266%20270%20L286%20356%20L212%20310%20L138%20356%20L158%20270%20L91%20214%20L179%20207%20Z%22%20fill%3D%22%23111827%22%20opacity%3D%22.72%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22450%22%20y%3D%22545%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2258%22%20font-weight%3D%22800%22%20fill%3D%22%23111827%22%3EGraffiti%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E",
+      "status": "resolved",
+      "votes": [
+        "seed-a",
+        "seed-b"
+      ],
+      "comments": [],
+      "created_at": "2026-04-18T17:53:16.971Z",
+      "updated_at": "2026-04-19T07:53:16.971Z"
+    }
+  ]
+}

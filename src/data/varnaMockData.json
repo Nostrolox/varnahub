@@ -1,0 +1,1170 @@
+{
+  "sources": [
+    {
+      "name": "Moreto.net",
+      "type": "events",
+      "url": "https://www.moreto.net/",
+      "status": "mock-adapter-ready"
+    },
+    {
+      "name": "Local venues",
+      "type": "events",
+      "url": "https://www.openstreetmap.org/",
+      "status": "manual-fallback"
+    }
+  ],
+  "users": [
+    {
+      "id": "user-demo",
+      "username": "demo",
+      "email": "demo@varnahub.local",
+      "password": "varna123",
+      "token": "mock-jwt-demo-varna-hub",
+      "favorites": [
+        "event:event-sea-garden-sessions",
+        "place:place-cubo"
+      ],
+      "going": [
+        "event-sea-garden-sessions"
+      ],
+      "reviews": []
+    }
+  ],
+  "events": [
+    {
+      "id": "event-sea-garden-sessions",
+      "source": "Moreto.net mock",
+      "title": {
+        "bg": "Sea Garden Sunset Sessions",
+        "en": "Sea Garden Sunset Sessions"
+      },
+      "dayOffset": 0,
+      "time": "19:30",
+      "endTime": "23:30",
+      "location": {
+        "bg": "Морска градина, централна алея",
+        "en": "Sea Garden, Central Alley"
+      },
+      "venue": "Sea Garden",
+      "category": "nightlife",
+      "basePopularity": 74,
+      "organizer": {
+        "name": "Varna Night Culture",
+        "link": "https://example.com/varna-night-culture",
+        "contact": "events@varna-night.local"
+      },
+      "ticket": {
+        "price": "Free",
+        "link": ""
+      },
+      "description": {
+        "bg": "Открити DJ сетове, напитки край морето и спокойна публика по централната алея на Морската градина.",
+        "en": "Open-air DJ sets, seaside drinks, and a relaxed sunset crowd along Varna's central Sea Garden route."
+      },
+      "richDescription": {
+        "bg": [
+          "Вечерта започва с по-лек melodic house сет и постепенно преминава към по-танцувален звук след залез.",
+          "Зоната е подходяща за приятели, които искат да започнат вечерта навън, без да влизат веднага в клуб.",
+          "Препоръчително е да пристигнете по-рано, ако искате маса близо до алеята."
+        ],
+        "en": [
+          "The evening starts with a lighter melodic house set and moves into a more dance-focused sound after sunset.",
+          "The area works well for groups who want to start outside before moving into the late-night scene.",
+          "Arrive earlier if you want a table close to the main alley."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2078,
+      "lng": 27.9271,
+      "schedule": [
+        {
+          "time": "19:30",
+          "bg": "Отваряне и warm-up",
+          "en": "Opening and warm-up"
+        },
+        {
+          "time": "21:00",
+          "bg": "Главен DJ сет",
+          "en": "Main DJ set"
+        },
+        {
+          "time": "23:30",
+          "bg": "Край на програмата",
+          "en": "Program ends"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Mira",
+          "rating": 5,
+          "comment": "Easygoing crowd and a great first stop before heading into town.",
+          "date": "2026-04-28"
+        },
+        {
+          "username": "Alex",
+          "rating": 4,
+          "comment": "Good music, a little busy after 21:00.",
+          "date": "2026-04-30"
+        }
+      ],
+      "startTime": "19:30",
+      "coordinates": {
+        "lat": 43.2078,
+        "lng": 27.9271
+      },
+      "shortDescription": {
+        "bg": "Открити DJ сетове, напитки край морето и спокойна публика по централната алея на Морската градина.",
+        "en": "Open-air DJ sets, seaside drinks, and a relaxed sunset crowd along Varna's central Sea Garden route."
+      },
+      "fullDescription": {
+        "bg": [
+          "Вечерта започва с по-лек melodic house сет и постепенно преминава към по-танцувален звук след залез.",
+          "Зоната е подходяща за приятели, които искат да започнат вечерта навън, без да влизат веднага в клуб.",
+          "Препоръчително е да пристигнете по-рано, ако искате маса близо до алеята."
+        ],
+        "en": [
+          "The evening starts with a lighter melodic house set and moves into a more dance-focused sound after sunset.",
+          "The area works well for groups who want to start outside before moving into the late-night scene.",
+          "Arrive earlier if you want a table close to the main alley."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "verified",
+        "free",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "nightlife",
+        "Sea Garden",
+        "Varna Night Culture"
+      ],
+      "rating": 4.5,
+      "reviewsCount": 2,
+      "popularityScore": 74
+    },
+    {
+      "id": "event-sea-garden-sessions-duplicate",
+      "source": "Local venue duplicate mock",
+      "duplicateOf": "event-sea-garden-sessions",
+      "title": {
+        "bg": "Sea Garden Sunset Sessions",
+        "en": "Sea Garden Sunset Sessions"
+      },
+      "dayOffset": 0,
+      "time": "19:30",
+      "endTime": "23:30",
+      "location": {
+        "bg": "Морска градина, централна алея",
+        "en": "Sea Garden, Central Alley"
+      },
+      "venue": "Sea Garden",
+      "category": "nightlife",
+      "basePopularity": 52,
+      "organizer": {
+        "name": "Duplicate Source",
+        "link": "",
+        "contact": ""
+      },
+      "ticket": {
+        "price": "Free",
+        "link": ""
+      },
+      "description": {
+        "bg": "Дублиращ запис, който се филтрира автоматично.",
+        "en": "Duplicate record that is filtered automatically."
+      },
+      "richDescription": {
+        "bg": [
+          "Дублиращ запис от втори източник."
+        ],
+        "en": [
+          "Duplicate record from a second source."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2078,
+      "lng": 27.9271,
+      "schedule": [],
+      "reviews": [],
+      "startTime": "19:30",
+      "coordinates": {
+        "lat": 43.2078,
+        "lng": 27.9271
+      },
+      "shortDescription": {
+        "bg": "Дублиращ запис, който се филтрира автоматично.",
+        "en": "Duplicate record that is filtered automatically."
+      },
+      "fullDescription": {
+        "bg": [
+          "Дублиращ запис от втори източник."
+        ],
+        "en": [
+          "Duplicate record from a second source."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1400&q=80"
+      ],
+      "badges": [
+        "free",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "nightlife",
+        "Sea Garden",
+        "Duplicate Source"
+      ],
+      "rating": 0,
+      "reviewsCount": 0,
+      "popularityScore": 52
+    },
+    {
+      "id": "event-opera-spring-arias",
+      "source": "Moreto.net mock",
+      "title": {
+        "bg": "Варненска опера: Пролетни арии",
+        "en": "Varna Opera: Spring Arias"
+      },
+      "dayOffset": 1,
+      "time": "20:00",
+      "endTime": "21:45",
+      "location": {
+        "bg": "Държавна опера Варна",
+        "en": "Varna Opera House"
+      },
+      "venue": "State Opera Varna",
+      "category": "concerts",
+      "basePopularity": 62,
+      "organizer": {
+        "name": "State Opera Varna",
+        "link": "https://example.com/opera-varna",
+        "contact": "tickets@opera-varna.local"
+      },
+      "ticket": {
+        "price": "25-60 BGN",
+        "link": "https://example.com/tickets/opera"
+      },
+      "description": {
+        "bg": "Гост-солисти изпълняват кратка вечерна програма с класически арии в историческата сграда на операта.",
+        "en": "Guest soloists perform a compact evening program of classic arias in the historic opera house."
+      },
+      "richDescription": {
+        "bg": [
+          "Програмата събира познати арии и камерни моменти, подходящи както за редовна публика, така и за първо посещение.",
+          "След края районът около площада остава удобен за вечеря или чаша вино."
+        ],
+        "en": [
+          "The program combines familiar arias and chamber moments, suitable for regular opera-goers and first-time visitors.",
+          "After the performance, the square nearby is convenient for dinner or a glass of wine."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2043,
+      "lng": 27.9145,
+      "schedule": [
+        {
+          "time": "19:30",
+          "bg": "Вход на публика",
+          "en": "Doors open"
+        },
+        {
+          "time": "20:00",
+          "bg": "Първа част",
+          "en": "First part"
+        },
+        {
+          "time": "21:45",
+          "bg": "Край",
+          "en": "End"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Nikolay",
+          "rating": 5,
+          "comment": "Beautiful room, strong voices, and perfect for a quieter night.",
+          "date": "2026-04-29"
+        }
+      ],
+      "startTime": "20:00",
+      "coordinates": {
+        "lat": 43.2043,
+        "lng": 27.9145
+      },
+      "shortDescription": {
+        "bg": "Гост-солисти изпълняват кратка вечерна програма с класически арии в историческата сграда на операта.",
+        "en": "Guest soloists perform a compact evening program of classic arias in the historic opera house."
+      },
+      "fullDescription": {
+        "bg": [
+          "Програмата събира познати арии и камерни моменти, подходящи както за редовна публика, така и за първо посещение.",
+          "След края районът около площада остава удобен за вечеря или чаша вино."
+        ],
+        "en": [
+          "The program combines familiar arias and chamber moments, suitable for regular opera-goers and first-time visitors.",
+          "After the performance, the square nearby is convenient for dinner or a glass of wine."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "verified",
+        "paid",
+        "ticketRequired",
+        "foodNearby"
+      ],
+      "tags": [
+        "concerts",
+        "State Opera Varna",
+        "State Opera Varna"
+      ],
+      "rating": 5,
+      "reviewsCount": 1,
+      "popularityScore": 62
+    },
+    {
+      "id": "event-central-beach-meetup",
+      "source": "Community mock",
+      "title": {
+        "bg": "Сутрешна среща на Централен плаж",
+        "en": "Central Beach Morning Meetup"
+      },
+      "dayOffset": 1,
+      "time": "10:00",
+      "endTime": "12:30",
+      "location": {
+        "bg": "Централен плаж",
+        "en": "Central Beach"
+      },
+      "venue": "Central Beach Varna",
+      "category": "meetups",
+      "basePopularity": 48,
+      "organizer": {
+        "name": "Varna Locals Meetup",
+        "link": "https://example.com/meetup",
+        "contact": ""
+      },
+      "ticket": {
+        "price": "Free",
+        "link": ""
+      },
+      "description": {
+        "bg": "Неформална среща с волейбол, кафе и кратко почистване на плажа преди обяд.",
+        "en": "A casual local meetup with volleyball, coffee, and an optional short beach clean-up before lunch."
+      },
+      "richDescription": {
+        "bg": [
+          "Събитието е отворено за нови хора и не изисква регистрация.",
+          "Носете вода, удобни обувки и добро настроение."
+        ],
+        "en": [
+          "The meetup is open to newcomers and does not require registration.",
+          "Bring water, comfortable shoes, and a good mood."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2049,
+      "lng": 27.9253,
+      "schedule": [
+        {
+          "time": "10:00",
+          "bg": "Събиране",
+          "en": "Meetup starts"
+        },
+        {
+          "time": "10:30",
+          "bg": "Волейбол и кафе",
+          "en": "Volleyball and coffee"
+        },
+        {
+          "time": "12:00",
+          "bg": "Кратко почистване",
+          "en": "Short clean-up"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Petya",
+          "rating": 4,
+          "comment": "Friendly people and easy to join even if you arrive late.",
+          "date": "2026-04-24"
+        }
+      ],
+      "startTime": "10:00",
+      "coordinates": {
+        "lat": 43.2049,
+        "lng": 27.9253
+      },
+      "shortDescription": {
+        "bg": "Неформална среща с волейбол, кафе и кратко почистване на плажа преди обяд.",
+        "en": "A casual local meetup with volleyball, coffee, and an optional short beach clean-up before lunch."
+      },
+      "fullDescription": {
+        "bg": [
+          "Събитието е отворено за нови хора и не изисква регистрация.",
+          "Носете вода, удобни обувки и добро настроение."
+        ],
+        "en": [
+          "The meetup is open to newcomers and does not require registration.",
+          "Bring water, comfortable shoes, and a good mood."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1520454974749-611b7248ffdb?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "free",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "meetups",
+        "Central Beach Varna",
+        "Varna Locals Meetup"
+      ],
+      "rating": 4,
+      "reviewsCount": 1,
+      "popularityScore": 48
+    },
+    {
+      "id": "event-fcc-street-bites",
+      "source": "Moreto.net mock",
+      "title": {
+        "bg": "Street Bites Pop-up",
+        "en": "Street Bites Pop-up"
+      },
+      "dayOffset": 2,
+      "time": "18:00",
+      "endTime": "22:00",
+      "location": {
+        "bg": "Фестивален и конгресен център",
+        "en": "Festival and Congress Centre"
+      },
+      "venue": "FCC Varna",
+      "category": "festivals",
+      "basePopularity": 78,
+      "organizer": {
+        "name": "Varna Food Collective",
+        "link": "https://example.com/food",
+        "contact": "hello@varnafood.local"
+      },
+      "ticket": {
+        "price": "8 BGN",
+        "link": "https://example.com/tickets/street-bites"
+      },
+      "description": {
+        "bg": "Малки порции от местни кухни, крафт лимонада и гласуване за най-добра хапка на вечерта.",
+        "en": "Small plates from local kitchens, craft lemonade, and a public vote for the best bite of the night."
+      },
+      "richDescription": {
+        "bg": [
+          "Форматът е удобен за дегустации: повече щандове, малки порции и бързо обслужване.",
+          "Очакват се както ресторанти, така и улични концепции."
+        ],
+        "en": [
+          "The format is built for tasting: more stands, smaller portions, and quick service.",
+          "Expect both restaurants and street-food concepts."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2053,
+      "lng": 27.9211,
+      "schedule": [
+        {
+          "time": "18:00",
+          "bg": "Отваряне на щандовете",
+          "en": "Food stands open"
+        },
+        {
+          "time": "20:30",
+          "bg": "Гласуване за любима хапка",
+          "en": "Best bite voting"
+        },
+        {
+          "time": "22:00",
+          "bg": "Край",
+          "en": "End"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Deni",
+          "rating": 5,
+          "comment": "Great variety and prices were friendlier than expected.",
+          "date": "2026-04-27"
+        },
+        {
+          "username": "Chris",
+          "rating": 4,
+          "comment": "Worth going early before the popular stands sell out.",
+          "date": "2026-04-27"
+        }
+      ],
+      "startTime": "18:00",
+      "coordinates": {
+        "lat": 43.2053,
+        "lng": 27.9211
+      },
+      "shortDescription": {
+        "bg": "Малки порции от местни кухни, крафт лимонада и гласуване за най-добра хапка на вечерта.",
+        "en": "Small plates from local kitchens, craft lemonade, and a public vote for the best bite of the night."
+      },
+      "fullDescription": {
+        "bg": [
+          "Форматът е удобен за дегустации: повече щандове, малки порции и бързо обслужване.",
+          "Очакват се както ресторанти, така и улични концепции."
+        ],
+        "en": [
+          "The format is built for tasting: more stands, smaller portions, and quick service.",
+          "Expect both restaurants and street-food concepts."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "verified",
+        "paid",
+        "ticketRequired",
+        "popular",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "festivals",
+        "FCC Varna",
+        "Varna Food Collective"
+      ],
+      "rating": 4.5,
+      "reviewsCount": 2,
+      "popularityScore": 78
+    },
+    {
+      "id": "event-port-mini-festival",
+      "source": "Moreto.net mock",
+      "title": {
+        "bg": "Мини фестивал Пристанище Варна",
+        "en": "Port Varna Mini Festival"
+      },
+      "dayOffset": 3,
+      "time": "17:30",
+      "endTime": "23:00",
+      "location": {
+        "bg": "Променада Пристанище Варна",
+        "en": "Port Varna Promenade"
+      },
+      "venue": "Port Varna",
+      "category": "festivals",
+      "basePopularity": 82,
+      "organizer": {
+        "name": "Port Varna Events",
+        "link": "https://example.com/port",
+        "contact": ""
+      },
+      "ticket": {
+        "price": "Free",
+        "link": ""
+      },
+      "description": {
+        "bg": "Малки сцени, авторски щандове, морски хапки и гледки към пристанището по залез.",
+        "en": "Small stages, maker stalls, seafood bites, and golden-hour views across the port promenade."
+      },
+      "richDescription": {
+        "bg": [
+          "Маршрутът е свободен и позволява кратко или по-дълго посещение.",
+          "Подходящо е за семейства по-рано и за вечерни групи след 20:00."
+        ],
+        "en": [
+          "The route is open and works for both quick stops and longer visits.",
+          "It suits families earlier and evening groups after 20:00."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.1964,
+      "lng": 27.9187,
+      "schedule": [
+        {
+          "time": "17:30",
+          "bg": "Отваряне",
+          "en": "Opening"
+        },
+        {
+          "time": "19:00",
+          "bg": "Акустична сцена",
+          "en": "Acoustic stage"
+        },
+        {
+          "time": "21:00",
+          "bg": "DJ сет",
+          "en": "DJ set"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Ivo",
+          "rating": 5,
+          "comment": "The port is a great backdrop and the food stands were solid.",
+          "date": "2026-04-25"
+        }
+      ],
+      "startTime": "17:30",
+      "coordinates": {
+        "lat": 43.1964,
+        "lng": 27.9187
+      },
+      "shortDescription": {
+        "bg": "Малки сцени, авторски щандове, морски хапки и гледки към пристанището по залез.",
+        "en": "Small stages, maker stalls, seafood bites, and golden-hour views across the port promenade."
+      },
+      "fullDescription": {
+        "bg": [
+          "Маршрутът е свободен и позволява кратко или по-дълго посещение.",
+          "Подходящо е за семейства по-рано и за вечерни групи след 20:00."
+        ],
+        "en": [
+          "The route is open and works for both quick stops and longer visits.",
+          "It suits families earlier and evening groups after 20:00."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "verified",
+        "free",
+        "popular",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "festivals",
+        "Port Varna",
+        "Port Varna Events"
+      ],
+      "rating": 5,
+      "reviewsCount": 1,
+      "popularityScore": 82
+    },
+    {
+      "id": "event-greek-quarter-art-crawl",
+      "source": "Community mock",
+      "title": {
+        "bg": "Арт обиколка в Гръцката махала",
+        "en": "Greek Quarter Art Crawl"
+      },
+      "dayOffset": 5,
+      "time": "18:30",
+      "endTime": "21:30",
+      "location": {
+        "bg": "Гръцка махала",
+        "en": "Greek Quarter"
+      },
+      "venue": "Independent galleries",
+      "category": "culture",
+      "basePopularity": 57,
+      "organizer": {
+        "name": "Open Studios Varna",
+        "link": "https://example.com/open-studios",
+        "contact": "studios@varna.local"
+      },
+      "ticket": {
+        "price": "Free",
+        "link": ""
+      },
+      "description": {
+        "bg": "Независими галерии и студиа остават отворени до късно с принтове, вино и кратки разговори с артисти.",
+        "en": "Independent galleries and studios stay open late with prints, wine, and short artist talks."
+      },
+      "richDescription": {
+        "bg": [
+          "Обиколката е пешеходна и включва няколко малки пространства.",
+          "Всеки обект има кратка програма, така че може да се включите по всяко време."
+        ],
+        "en": [
+          "The crawl is walkable and includes several small spaces.",
+          "Each venue has a short program, so you can join at any point."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2014,
+      "lng": 27.9167,
+      "schedule": [
+        {
+          "time": "18:30",
+          "bg": "Първа галерия",
+          "en": "First gallery"
+        },
+        {
+          "time": "19:45",
+          "bg": "Разговор с артист",
+          "en": "Artist talk"
+        },
+        {
+          "time": "21:30",
+          "bg": "Край",
+          "en": "End"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Elena",
+          "rating": 4,
+          "comment": "Lovely route for discovering smaller studios.",
+          "date": "2026-04-26"
+        }
+      ],
+      "startTime": "18:30",
+      "coordinates": {
+        "lat": 43.2014,
+        "lng": 27.9167
+      },
+      "shortDescription": {
+        "bg": "Независими галерии и студиа остават отворени до късно с принтове, вино и кратки разговори с артисти.",
+        "en": "Independent galleries and studios stay open late with prints, wine, and short artist talks."
+      },
+      "fullDescription": {
+        "bg": [
+          "Обиколката е пешеходна и включва няколко малки пространства.",
+          "Всеки обект има кратка програма, така че може да се включите по всяко време."
+        ],
+        "en": [
+          "The crawl is walkable and includes several small spaces.",
+          "Each venue has a short program, so you can join at any point."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "free",
+        "foodNearby"
+      ],
+      "tags": [
+        "culture",
+        "Independent galleries",
+        "Open Studios Varna"
+      ],
+      "rating": 4,
+      "reviewsCount": 1,
+      "popularityScore": 57
+    },
+    {
+      "id": "event-hale3-electronic-night",
+      "source": "Local venue mock",
+      "title": {
+        "bg": "Hale 3 Electronic Night",
+        "en": "Hale 3 Electronic Night"
+      },
+      "dayOffset": 0,
+      "time": "22:30",
+      "endTime": "03:00",
+      "location": {
+        "bg": "Hale 3",
+        "en": "Hale 3"
+      },
+      "venue": "Hale 3",
+      "category": "nightlife",
+      "basePopularity": 69,
+      "organizer": {
+        "name": "Hale 3",
+        "link": "https://example.com/hale3",
+        "contact": ""
+      },
+      "ticket": {
+        "price": "15 BGN",
+        "link": "https://example.com/tickets/hale3"
+      },
+      "description": {
+        "bg": "Късна клубна програма с двама локални селектори и компактна визуална инсталация.",
+        "en": "A late-night club program with two local selectors and a compact visual installation."
+      },
+      "richDescription": {
+        "bg": [
+          "Сетът започва след 22:30 и е ориентиран към електронна музика с по-тъмен клубен звук.",
+          "Подходящо за хора, които търсят последна спирка за вечерта."
+        ],
+        "en": [
+          "The set starts after 22:30 and leans into electronic music with a darker club sound.",
+          "Best as a final stop for the night."
+        ]
+      },
+      "gallery": [
+        "https://images.unsplash.com/photo-1571266028243-d220c9c3a6f8?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "image": "https://images.unsplash.com/photo-1571266028243-d220c9c3a6f8?auto=format&fit=crop&w=1400&q=80",
+      "lat": 43.2012,
+      "lng": 27.9134,
+      "schedule": [
+        {
+          "time": "22:30",
+          "bg": "Врати",
+          "en": "Doors"
+        },
+        {
+          "time": "23:30",
+          "bg": "Първи сет",
+          "en": "First set"
+        },
+        {
+          "time": "01:00",
+          "bg": "Главен сет",
+          "en": "Main set"
+        }
+      ],
+      "reviews": [
+        {
+          "username": "Stan",
+          "rating": 4,
+          "comment": "Strong sound and convenient location for a late set.",
+          "date": "2026-04-30"
+        }
+      ],
+      "startTime": "22:30",
+      "coordinates": {
+        "lat": 43.2012,
+        "lng": 27.9134
+      },
+      "shortDescription": {
+        "bg": "Късна клубна програма с двама локални селектори и компактна визуална инсталация.",
+        "en": "A late-night club program with two local selectors and a compact visual installation."
+      },
+      "fullDescription": {
+        "bg": [
+          "Сетът започва след 22:30 и е ориентиран към електронна музика с по-тъмен клубен звук.",
+          "Подходящо за хора, които търсят последна спирка за вечерта."
+        ],
+        "en": [
+          "The set starts after 22:30 and leans into electronic music with a darker club sound.",
+          "Best as a final stop for the night."
+        ]
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1571266028243-d220c9c3a6f8?auto=format&fit=crop&w=1400&q=80",
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+      ],
+      "badges": [
+        "paid",
+        "ticketRequired",
+        "outdoor",
+        "foodNearby"
+      ],
+      "tags": [
+        "nightlife",
+        "Hale 3",
+        "Hale 3"
+      ],
+      "rating": 4,
+      "reviewsCount": 1,
+      "popularityScore": 69
+    }
+  ],
+  "places": [
+    {
+      "id": "place-staria-chinar",
+      "name": "Staria Chinar",
+      "category": "restaurants",
+      "cuisine": {
+        "bg": "Българска скара",
+        "en": "Bulgarian grill"
+      },
+      "rating": 4.7,
+      "priceRange": "$$",
+      "location": {
+        "bg": "ул. Преслав",
+        "en": "Preslav Street"
+      },
+      "description": {
+        "bg": "Надежден ресторант в центъра за скара, салати и класически български ястия.",
+        "en": "A dependable center-city restaurant for grilled meats, salads, and classic Bulgarian plates."
+      },
+      "image": "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.2036,
+      "lng": 27.9148,
+      "reviews": [
+        {
+          "username": "Mira",
+          "rating": 5,
+          "comment": "Great after events near the opera or center.",
+          "date": "2026-04-27"
+        }
+      ],
+      "type": "restaurants",
+      "coordinates": {
+        "lat": 43.2036,
+        "lng": 27.9148
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "restaurants",
+        "$$"
+      ],
+      "reviewsCount": 1
+    },
+    {
+      "id": "place-morski-duner",
+      "name": "Morski Duner",
+      "category": "street food",
+      "cuisine": {
+        "bg": "Дюнери и wraps",
+        "en": "Doner and wraps"
+      },
+      "rating": 4.5,
+      "priceRange": "$",
+      "location": {
+        "bg": "бул. Княз Борис I",
+        "en": "Knyaz Boris I Blvd"
+      },
+      "description": {
+        "bg": "Бързо и засищащо място след плажа или преди късна разходка в центъра.",
+        "en": "Fast, filling, and reliable after the beach or before a late walk through the center."
+      },
+      "image": "https://images.unsplash.com/photo-1625938145744-e38051539963?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.2051,
+      "lng": 27.9161,
+      "reviews": [
+        {
+          "username": "Alex",
+          "rating": 4,
+          "comment": "Best value when you need something quick.",
+          "date": "2026-04-30"
+        }
+      ],
+      "type": "street food",
+      "coordinates": {
+        "lat": 43.2051,
+        "lng": 27.9161
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "street food",
+        "$"
+      ],
+      "reviewsCount": 1
+    },
+    {
+      "id": "place-cubo",
+      "name": "Cubo Beach Bar",
+      "category": "bars",
+      "cuisine": {
+        "bg": "Коктейли и плажни хапки",
+        "en": "Cocktails and beach snacks"
+      },
+      "rating": 4.6,
+      "priceRange": "$$",
+      "location": {
+        "bg": "Централен плаж",
+        "en": "Central Beach"
+      },
+      "description": {
+        "bg": "Плажни напитки, леки хапки и силна pre-party атмосфера в топло време.",
+        "en": "Beachfront drinks, light bites, and a strong pre-party atmosphere in warm weather."
+      },
+      "image": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.2044,
+      "lng": 27.9264,
+      "reviews": [
+        {
+          "username": "Petya",
+          "rating": 5,
+          "comment": "Perfect near beach events and easy to find friends.",
+          "date": "2026-04-29"
+        }
+      ],
+      "type": "bars",
+      "coordinates": {
+        "lat": 43.2044,
+        "lng": 27.9264
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "bars",
+        "$$"
+      ],
+      "reviewsCount": 1
+    },
+    {
+      "id": "place-green-corner",
+      "name": "Green Corner Varna",
+      "category": "cafes",
+      "cuisine": {
+        "bg": "Боулове, wraps, кафе",
+        "en": "Bowls, wraps, coffee"
+      },
+      "rating": 4.8,
+      "priceRange": "$$",
+      "location": {
+        "bg": "Вход Морска градина",
+        "en": "Sea Garden entrance"
+      },
+      "description": {
+        "bg": "Свежи боулове, wraps, лимонада и кафе, когато искате нещо по-леко до парка.",
+        "en": "Fresh bowls, wraps, lemonade, and coffee when you want something lighter near the park."
+      },
+      "image": "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.2071,
+      "lng": 27.9228,
+      "reviews": [
+        {
+          "username": "Deni",
+          "rating": 5,
+          "comment": "Bright, fresh, and quick before evening plans.",
+          "date": "2026-04-25"
+        }
+      ],
+      "type": "cafes",
+      "coordinates": {
+        "lat": 43.2071,
+        "lng": 27.9228
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "cafes",
+        "$$"
+      ],
+      "reviewsCount": 1
+    },
+    {
+      "id": "place-port-grill",
+      "name": "Port Grill Window",
+      "category": "street food",
+      "cuisine": {
+        "bg": "Морски сандвичи",
+        "en": "Seafood sandwiches"
+      },
+      "rating": 4.4,
+      "priceRange": "$",
+      "location": {
+        "bg": "Променада Пристанище Варна",
+        "en": "Port Varna Promenade"
+      },
+      "description": {
+        "bg": "Малки сандвичи с риба на грил и салати близо до пристанището, с бързо обслужване за вкъщи.",
+        "en": "Small grilled fish sandwiches and salads close to the port, with quick takeaway service."
+      },
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.1969,
+      "lng": 27.9184,
+      "reviews": [
+        {
+          "username": "Ivo",
+          "rating": 4,
+          "comment": "Handy for port events and not too heavy.",
+          "date": "2026-04-23"
+        }
+      ],
+      "type": "street food",
+      "coordinates": {
+        "lat": 43.1969,
+        "lng": 27.9184
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "street food",
+        "$"
+      ],
+      "reviewsCount": 1
+    },
+    {
+      "id": "place-bistro-33",
+      "name": "Bistro 33",
+      "category": "restaurants",
+      "cuisine": {
+        "bg": "Обедно меню и европейска кухня",
+        "en": "Daily lunch and European"
+      },
+      "rating": 4.6,
+      "priceRange": "$$",
+      "location": {
+        "bg": "пл. Независимост",
+        "en": "Nezavisimost Square"
+      },
+      "description": {
+        "bg": "Семпли дневни ястия, добри супи и приятелско обслужване без туристическа надценка.",
+        "en": "Simple daily plates, good soups, and friendly service without a tourist markup."
+      },
+      "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1200&q=80",
+      "lat": 43.2055,
+      "lng": 27.9129,
+      "reviews": [
+        {
+          "username": "Nikolay",
+          "rating": 4,
+          "comment": "A practical center option before theatre or opera.",
+          "date": "2026-04-21"
+        }
+      ],
+      "type": "restaurants",
+      "coordinates": {
+        "lat": 43.2055,
+        "lng": 27.9129
+      },
+      "openingHours": "10:00-23:00",
+      "badges": [
+        "verified"
+      ],
+      "tags": [
+        "restaurants",
+        "$$"
+      ],
+      "reviewsCount": 1
+    }
+  ]
+}
