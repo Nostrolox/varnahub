@@ -19,6 +19,7 @@
       "username": "demo",
       "email": "demo@varnahub.local",
       "password": "varna123",
+      "role": "user",
       "token": "mock-jwt-demo-varna-hub",
       "favorites": [
         "event:event-sea-garden-sessions",
@@ -27,6 +28,17 @@
       "going": [
         "event-sea-garden-sessions"
       ],
+      "reviews": []
+    },
+    {
+      "id": "admin1",
+      "username": "admin",
+      "email": "admin@varnahub.local",
+      "password": "change-me",
+      "role": "admin",
+      "token": "mock-jwt-admin-varna-hub",
+      "favorites": [],
+      "going": [],
       "reviews": []
     }
   ],

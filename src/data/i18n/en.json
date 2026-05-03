@@ -203,6 +203,7 @@
     "favoriteUpdated": "Favorites updated.",
     "missingEventFields": "Title, date, and location are required.",
     "missingPlaceFields": "Name and location are required.",
+    "accessDenied": "You do not have permission to access this page.",
     "offlineCache": "Showing the last local cache.",
     "noEvents": "No matching events.",
     "noPlaces": "No matching places.",

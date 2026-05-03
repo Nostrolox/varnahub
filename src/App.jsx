@@ -262,6 +262,19 @@ function createEmptyAdminPlace() {
   };
 }
 
+function getInitialView() {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  return path === "admin" ? "admin" : "home";
+}
+
+function ensureAccountRoles(accounts) {
+  const byId = new Map(accounts.map((account) => [account.id, { role: "user", favorites: [], going: [], reviews: [], ...account }]));
+  for (const account of mockData.users || []) {
+    if (!byId.has(account.id)) byId.set(account.id, { role: "user", favorites: [], going: [], reviews: [], ...account });
+  }
+  return [...byId.values()];
+}
+
 export default function App() {
   const [language, setLanguage] = useLocalStorage("varnaHub:language", "bg");
   const dictionary = I18N[language] || I18N.bg;
@@ -273,7 +286,7 @@ export default function App() {
   const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
   const weekEnd = addDays(today, 6);
 
-  const [activeView, setActiveView] = useState("home");
+  const [activeView, setActiveView] = useState(getInitialView);
   const [selected, setSelected] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -287,7 +300,7 @@ export default function App() {
   const [favoritesTab, setFavoritesTab] = useState("events");
   const [adminTab, setAdminTab] = useState("events");
   const [toast, setToast] = useState("");
-  const [accounts, setAccounts] = useLocalStorage("varnaHub:accounts:v3", mockData.users || []);
+  const [accounts, setAccounts] = useLocalStorage("varnaHub:accounts:v3", ensureAccountRoles(mockData.users || []));
   const [session, setSession] = useLocalStorage("varnaHub:session", null);
   const [localEvents, setLocalEvents] = useLocalStorage("varnaHub:adminEvents:v2", []);
   const [localPlaces, setLocalPlaces] = useLocalStorage("varnaHub:adminPlaces", []);
@@ -305,7 +318,16 @@ export default function App() {
     return () => window.clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    setAccounts((current) => {
+      const next = ensureAccountRoles(current);
+      return JSON.stringify(next) === JSON.stringify(current) ? current : next;
+    });
+  }, [setAccounts]);
+
   const user = accounts.find((account) => account.id === session?.userId) || null;
+  // TODO: This is frontend-only mock access control. Production admin security should use Supabase, Firebase, Auth0, or a backend with server-side role checks.
+  const isAdmin = user?.role === "admin";
   const userFavorites = user?.favorites || [];
   const userGoing = user?.going || [];
   const userReviews = useMemo(() => accounts.flatMap((account) => (account.reviews || []).map((review) => ({ ...review, username: account.username }))), [accounts]);
@@ -388,6 +410,8 @@ export default function App() {
     setSelected(null);
     setActiveView(view);
     setIsMenuOpen(false);
+    const nextPath = view === "admin" ? "/admin" : "/";
+    if (window.location.pathname !== nextPath) window.history.pushState({}, "", nextPath);
   }
 
   function updateUser(patch) {
@@ -399,6 +423,13 @@ export default function App() {
     if (user) return true;
     showToast(t(messageKey));
     setView("profile");
+    return false;
+  }
+
+  function requireAdmin() {
+    if (isAdmin) return true;
+    showToast(t("messages.accessDenied"));
+    if (!user) setView("profile");
     return false;
   }
 
@@ -439,7 +470,7 @@ export default function App() {
     if (!email || !password) return showToast(t("messages.emailPasswordRequired"));
     if (authMode === "register") {
       if (accounts.some((account) => account.email === email)) return showToast(t("messages.accountExists"));
-      const account = { id: `user-${Date.now()}`, email, password, username, token: `mock-jwt-${Date.now()}`, favorites: [], going: [], reviews: [] };
+      const account = { id: `user-${Date.now()}`, email, password, username, role: "user", token: `mock-jwt-${Date.now()}`, favorites: [], going: [], reviews: [] };
       setAccounts((current) => [...current, account]);
       setSession({ userId: account.id, token: account.token });
       setAuthDraft({ email: "", password: "", username: "" });
@@ -474,6 +505,7 @@ export default function App() {
 
   function saveAdminEvent(event) {
     event.preventDefault();
+    if (!requireAdmin()) return;
     if (!adminEventDraft.titleBg.trim() || !adminEventDraft.date || !adminEventDraft.locationBg.trim()) return showToast(t("messages.missingEventFields"));
     const record = normalizeEvent(
       {
@@ -507,6 +539,7 @@ export default function App() {
 
   function saveAdminPlace(event) {
     event.preventDefault();
+    if (!requireAdmin()) return;
     if (!adminPlaceDraft.name.trim() || !adminPlaceDraft.locationBg.trim()) return showToast(t("messages.missingPlaceFields"));
     const record = normalizePlace({
       id: adminPlaceDraft.id || `place-admin-${Date.now()}`,
@@ -532,6 +565,7 @@ export default function App() {
   }
 
   function editAdminEvent(event) {
+    if (!requireAdmin()) return;
     setAdminEventDraft({
       id: event.id,
       titleBg: event.title?.bg || l(event.title),
@@ -561,6 +595,7 @@ export default function App() {
   }
 
   function editAdminPlace(place) {
+    if (!requireAdmin()) return;
     setAdminPlaceDraft({
       id: place.id,
       name: place.name,
@@ -583,12 +618,14 @@ export default function App() {
   }
 
   function deleteAdminEvent(id) {
+    if (!requireAdmin()) return;
     setDeletedEventIds((current) => [...new Set([...current, id])]);
     setLocalEvents((current) => current.filter((item) => item.id !== id));
     showToast(t("messages.eventDeleted"));
   }
 
   function deleteAdminPlace(id) {
+    if (!requireAdmin()) return;
     setDeletedPlaceIds((current) => [...new Set([...current, id])]);
     setLocalPlaces((current) => current.filter((item) => item.id !== id));
     showToast(t("messages.placeDeleted"));
@@ -608,6 +645,7 @@ export default function App() {
     favoritesTab,
     formatDate,
     isMenuOpen,
+    isAdmin,
     language,
     l,
     locale,
@@ -686,7 +724,20 @@ export default function App() {
                 }}
               />
             )}
-            {activeView === "admin" && (
+            {activeView === "admin" && !user && (
+              <ProfileView
+                {...props}
+                authDraft={authDraft}
+                authMode={authMode}
+                handleAuthSubmit={handleAuthSubmit}
+                logout={() => {
+                  setSession(null);
+                  showToast(t("messages.signedOut"));
+                }}
+              />
+            )}
+            {activeView === "admin" && user && !isAdmin && <AccessDenied t={t} />}
+            {activeView === "admin" && isAdmin && (
               <AdminView
                 {...props}
                 deleteAdminEvent={deleteAdminEvent}
@@ -727,16 +778,16 @@ function commaList(value) {
     .filter(Boolean);
 }
 
-function Header({ activeView, isMenuOpen, language, setActiveView, setIsMenuOpen, setLanguage, t, user, userFavorites, formatDate }) {
+function Header({ activeView, isAdmin, isMenuOpen, language, setActiveView, setIsMenuOpen, setLanguage, t, user, userFavorites, formatDate }) {
   const navItems = [
     ["home", t("nav.home")],
     ["events", t("nav.events")],
     ["places", t("nav.places")],
     ["favorites", t("nav.favorites")],
     ["map", t("nav.map")],
-    ["profile", user ? t("nav.profile") : t("nav.account")],
-    ["admin", t("nav.admin")]
+    ["profile", user ? t("nav.profile") : t("nav.account")]
   ];
+  if (isAdmin) navItems.push(["admin", t("nav.admin")]);
   return (
     <header className="site-header wide">
       <button className="brand" onClick={() => setActiveView("home")} type="button">
@@ -1079,6 +1130,17 @@ function AdminView(props) {
           <AdminList deleteItem={deleteAdminPlace} editItem={editAdminPlace} items={places} label={(place) => `${place.name} - ${textValue(place.location, "en")}`} t={t} />
         </>
       )}
+    </section>
+  );
+}
+
+function AccessDenied({ t }) {
+  return (
+    <section className="view-stack">
+      <div className="empty-state">
+        <h2>{t("messages.accessDenied")}</h2>
+        <p>{t("nav.home")}</p>
+      </div>
     </section>
   );
 }

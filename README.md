@@ -70,6 +70,17 @@ Email: demo@varnahub.local
 Password: varna123
 ```
 
+## Mock Admin Login
+
+The Admin panel is hidden from normal users and only appears for accounts with `role: "admin"`.
+
+```text
+Email: admin@varnahub.local
+Password: change-me
+```
+
+This is frontend-only mock access control. A production release should enforce roles on the server with Supabase, Firebase, Auth0, or a custom backend.
+
 ## Project Structure
 
 ```text
