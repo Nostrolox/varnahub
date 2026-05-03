@@ -332,6 +332,14 @@ export default function App() {
   const userGoing = user?.going || [];
   const userReviews = useMemo(() => accounts.flatMap((account) => (account.reviews || []).map((review) => ({ ...review, username: account.username }))), [accounts]);
 
+  useEffect(() => {
+    if (activeView === "admin" && !user) {
+      setSelected(null);
+      setActiveView("profile");
+      if (window.location.pathname === "/admin") window.history.replaceState({}, "", "/");
+    }
+  }, [activeView, user]);
+
   const seedEvents = useMemo(() => (mockData.events || []).map((event) => normalizeEvent(event, today)), [today]);
   const seedPlaces = useMemo(() => (mockData.places || []).map(normalizePlace), []);
   const events = useMemo(
