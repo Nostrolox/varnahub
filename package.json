@@ -8,6 +8,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "import-events": "node scripts/import-visit-varna-events.mjs",
+    "import-places": "node scripts/import-places.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {

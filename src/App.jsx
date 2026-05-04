@@ -5,11 +5,13 @@ import mockData from "./data/varnaMockData.json";
 import bg from "./data/i18n/bg.json";
 import en from "./data/i18n/en.json";
 import { loadImportedEvents, readImportedEventsCache } from "./services/eventImportService";
+import { loadImportedPlaces, readImportedPlacesCache } from "./services/placeImportService";
 
 const VARNA_CENTER = { lat: 43.2047, lng: 27.9105 };
 const I18N = { bg, en };
 const EVENT_CATEGORIES = ["all", "concerts", "festivals", "nightlife", "culture", "food", "meetups"];
 const PLACE_CATEGORIES = ["all", "restaurants", "bars", "cafes", "street food"];
+const PLACE_FILTERS = ["all", "restaurants", "cafes", "bars", "street food", "bulgarian", "pizza", "burgers", "sushi", "desserts", "topRated", "openNow"];
 const DATE_FILTERS = ["all", "today", "tonight", "week", "weekend"];
 const SORTS = ["popularity", "date", "rating"];
 const QUICK_FILTERS = ["today", "tonight", "weekend", "free", "paid", "concerts", "festivals", "nightlife", "culture", "food", "near"];
@@ -189,18 +191,41 @@ function normalizeEvent(event, today) {
 }
 
 function normalizePlace(place) {
+  const category = appPlaceCategory(place.category || place.type);
+  const cuisine = typeof place.cuisine === "object" ? place.cuisine : { bg: place.cuisine || "", en: place.cuisine || "" };
+  const location = typeof place.location === "object" ? place.location : { bg: place.location || "Varna", en: place.location || "Varna" };
+  const description = place.description || place.shortDescription || "";
+  const descriptionValue = typeof description === "object" ? description : { bg: description, en: description };
+  const images = place.images?.length ? place.images : [place.image];
   return {
     ...place,
-    type: place.type || place.category || "restaurants",
-    category: place.category || place.type || "restaurants",
+    type: category,
+    category,
+    cuisine,
+    location,
+    description: descriptionValue,
     coordinates: place.coordinates || { lat: Number(place.lat || VARNA_CENTER.lat), lng: Number(place.lng || VARNA_CENTER.lng) },
     lat: Number(place.coordinates?.lat ?? place.lat ?? VARNA_CENTER.lat),
     lng: Number(place.coordinates?.lng ?? place.lng ?? VARNA_CENTER.lng),
     openingHours: place.openingHours || "10:00-23:00",
+    images,
+    image: safeImage(place.image || images?.[0] || "/place-placeholder.svg"),
+    rating: place.rating ?? 0,
     badges: place.badges || ["verified"],
-    tags: place.tags || [place.category, textValue(place.cuisine), place.priceRange].filter(Boolean),
+    tags: place.tags || [category, textValue(cuisine), place.priceRange, place.sourceName].filter(Boolean),
+    sourceName: place.sourceName || place.source || "",
+    sourceUrl: place.sourceUrl || "",
+    importedAt: place.importedAt || "",
     reviewsCount: place.reviewsCount || (place.reviews || []).length
   };
+}
+
+function appPlaceCategory(value) {
+  const text = String(value || "").toLowerCase().replace(/_/g, " ");
+  if (/bar|pub|bars/.test(text)) return "bars";
+  if (/cafe|coffee|tea|dessert|bakery|cake/.test(text)) return "cafes";
+  if (/fast|street|doner|kebab|burger/.test(text)) return "street food";
+  return "restaurants";
 }
 
 function dedupeEvents(events, language) {
@@ -322,13 +347,16 @@ export default function App() {
   const [deletedPlaceIds, setDeletedPlaceIds] = useLocalStorage("varnaHub:deletedPlaces", []);
   const [cache, setCache] = useLocalStorage("varnaHub:offlineCache:v2", { events: [], places: [], timestamp: null });
   const [importedEvents, setImportedEvents] = useState(readImportedEventsCache());
+  const [importedPlaces, setImportedPlaces] = useState(readImportedPlacesCache());
   const [authMode, setAuthMode] = useState("login");
   const [authDraft, setAuthDraft] = useState({ email: "", password: "", username: "" });
   const [reviewDraft, setReviewDraft] = useState({ rating: "5", comment: "" });
   const [adminEventDraft, setAdminEventDraft] = useState(() => createEmptyAdminEvent(todayValue));
   const [adminPlaceDraft, setAdminPlaceDraft] = useState(() => createEmptyAdminPlace());
   const [isImportingEvents, setIsImportingEvents] = useState(false);
+  const [isImportingPlaces, setIsImportingPlaces] = useState(false);
   const [importErrors, setImportErrors] = useState([]);
+  const [placeImportErrors, setPlaceImportErrors] = useState([]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsLoading(false), 350);
@@ -362,6 +390,21 @@ export default function App() {
     };
   }, [setImportedEvents]);
 
+  useEffect(() => {
+    let cancelled = false;
+    loadImportedPlaces()
+      .then((result) => {
+        if (cancelled) return;
+        setImportedPlaces(result.places);
+        setPlaceImportErrors(result.errors || []);
+        if (result.errors?.length) console.warn("[place-import] Startup import completed with source errors:", result.errors);
+      })
+      .catch((error) => console.warn("[place-import] Startup import failed safely:", error));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const user = accounts.find((account) => account.id === session?.userId) || null;
   // TODO: This is frontend-only mock access control. Production admin security should use Supabase, Firebase, Auth0, or a backend with server-side role checks.
   const isAdmin = user?.role === "admin";
@@ -381,7 +424,7 @@ export default function App() {
     () => [...(mockData.events || []), ...(importedEvents || [])].map((event) => normalizeEvent(event, today)),
     [importedEvents, today]
   );
-  const seedPlaces = useMemo(() => (mockData.places || []).map(normalizePlace), []);
+  const seedPlaces = useMemo(() => [...(mockData.places || []), ...(importedPlaces || [])].map(normalizePlace), [importedPlaces]);
   const events = useMemo(
     () => dedupeEvents([...seedEvents, ...localEvents.map((event) => normalizeEvent(event, today))].filter((event) => !deletedEventIds.includes(event.id)), language),
     [deletedEventIds, language, localEvents, seedEvents, today]
@@ -430,7 +473,7 @@ export default function App() {
     return effectivePlaces
       .filter((place) => {
         const searchable = `${place.name} ${l(place.location)} ${l(place.cuisine)} ${l(place.description)} ${place.tags?.join(" ") || ""} ${t(`categories.${place.category}`)}`.toLowerCase();
-        return (!normalizedQuery || searchable.includes(normalizedQuery)) && (placeCategory === "all" || place.category === placeCategory);
+        return (!normalizedQuery || searchable.includes(normalizedQuery)) && matchesPlaceFilter(place, placeCategory);
       })
       .sort((a, b) =>
         placeSort === "price"
@@ -703,6 +746,26 @@ export default function App() {
     }
   }
 
+  async function importPlacesFromSources() {
+    if (!requireAdmin()) return;
+    setIsImportingPlaces(true);
+    try {
+      const result = await loadImportedPlaces({ force: true });
+      setImportedPlaces(result.places);
+      setPlaceImportErrors(result.errors || []);
+      if (result.errors?.length) {
+        showToast(t("messages.importPlacesPartial").replace("{count}", result.places.length).replace("{sources}", result.errors.length));
+      } else {
+        showToast(result.places.length ? t("messages.importedPlaces").replace("{count}", result.places.length) : t("messages.importNoPlaces"));
+      }
+    } catch (error) {
+      console.warn("[place-import] Admin place import failed safely:", error);
+      showToast(t("messages.importPlacesFailed"));
+    } finally {
+      setIsImportingPlaces(false);
+    }
+  }
+
   const props = {
     accounts,
     activeView,
@@ -720,13 +783,17 @@ export default function App() {
     isAdmin,
     importErrors,
     importEventsFromSources,
+    importPlacesFromSources,
     importedEventsCount: (importedEvents || []).length,
+    importedPlacesCount: (importedPlaces || []).length,
     isImportingEvents,
+    isImportingPlaces,
     language,
     l,
     locale,
     openItem,
     places: effectivePlaces,
+    placeImportErrors,
     placeCategory,
     placeSort,
     query,
@@ -846,6 +913,18 @@ function matchesQuickFilters(event, filters, today, weekEnd, todayValue, nowMinu
     if (filter === "near") return distanceKm({ coordinates: VARNA_CENTER }, event) <= 3;
     return true;
   });
+}
+
+function matchesPlaceFilter(place, filter) {
+  if (filter === "all") return true;
+  const cuisine = textValue(place.cuisine, "bg").toLowerCase();
+  const tags = (place.tags || []).join(" ").toLowerCase();
+  const searchable = `${place.name} ${cuisine} ${tags}`.toLowerCase();
+  if (["restaurants", "bars", "cafes", "street food"].includes(filter)) return place.category === filter;
+  if (filter === "bulgarian") return /bulgarian|българ|local|traditional|скара|механа/.test(searchable);
+  if (filter === "topRated") return Number(place.rating || 0) >= 4.5 || (place.badges || []).includes("topRated");
+  if (filter === "openNow") return place.openingHours && !/closed|затворен/i.test(place.openingHours);
+  return searchable.includes(filter.toLowerCase());
 }
 
 function commaList(value) {
@@ -972,7 +1051,7 @@ function PlacesView(props) {
       <SectionTitle kicker={t("home.foodKicker")} title={t("nav.places")} />
       <div className="filters-panel places">
         <SearchField label={t("filters.search")} onChange={setQuery} placeholder={t("filters.searchPlacesPlaceholder")} value={query} />
-        <SelectField label={t("filters.category")} labels={categoryLabels(t)} onChange={setPlaceCategory} options={PLACE_CATEGORIES} value={placeCategory} />
+        <SelectField label={t("filters.category")} labels={categoryLabels(t)} onChange={setPlaceCategory} options={PLACE_FILTERS} value={placeCategory} />
         <SelectField label={t("filters.sort")} labels={optionLabels(t)} onChange={setPlaceSort} options={["rating", "price"]} value={placeSort} />
       </div>
       {visiblePlaces.length ? <div className="card-grid two">{visiblePlaces.map((place) => <PlaceCard {...props} key={place.id} place={place} />)}</div> : <EmptyState title={t("messages.noPlaces")} text={t("messages.tryDifferent")} />}
@@ -1204,7 +1283,7 @@ function ProfileView({ authDraft, authMode, events, handleAuthSubmit, l, logout,
 }
 
 function AdminView(props) {
-  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, importErrors = [], importEventsFromSources, importedEventsCount, isImportingEvents, l, places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
+  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, importErrors = [], importEventsFromSources, importPlacesFromSources, importedEventsCount, importedPlacesCount, isImportingEvents, isImportingPlaces, l, placeImportErrors = [], places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
   return (
     <section className="view-stack">
       <SectionTitle kicker={t("admin.kicker")} title={t("admin.title")} />
@@ -1227,6 +1306,14 @@ function AdminView(props) {
         </>
       ) : (
         <>
+          <div className="form-panel admin-import-panel">
+            <div>
+              <h2>{t("admin.importPlacesTitle")}</h2>
+              <p>{t("admin.importPlacesHelp").replace("{count}", importedPlacesCount || 0)}</p>
+              {placeImportErrors.length > 0 && <p>{t("admin.importErrors").replace("{count}", placeImportErrors.length)}</p>}
+            </div>
+            <button className="primary-action" disabled={isImportingPlaces} onClick={importPlacesFromSources} type="button">{isImportingPlaces ? t("actions.importingPlaces") : t("actions.importPlaces")}</button>
+          </div>
           <AdminPlaceForm draft={adminPlaceDraft} save={saveAdminPlace} setDraft={setAdminPlaceDraft} t={t} />
           <AdminList deleteItem={deleteAdminPlace} editItem={editAdminPlace} items={places} label={(place) => `${place.name} - ${textValue(place.location, "en")}`} t={t} />
         </>
@@ -1431,7 +1518,7 @@ function EmptyState({ text, title }) {
 }
 
 function categoryLabels(t) {
-  return Object.fromEntries([...EVENT_CATEGORIES, ...PLACE_CATEGORIES].map((category) => [category, t(`categories.${category}`)]));
+  return Object.fromEntries([...EVENT_CATEGORIES, ...PLACE_FILTERS].map((category) => [category, t(`categories.${category}`)]));
 }
 
 function optionLabels(t) {

@@ -9,6 +9,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Leaflet with OpenStreetMap tiles
 - Mock JSON data in `src/data/varnaMockData.json`
 - Server-side event import from Visit Varna, Varna Events, and Varna Culture, with a bundled cache in `src/data/importedVisitVarnaEvents.json`
+- Server-side place import from Glovo, Takeaway, and Tripadvisor, with a bundled cache in `src/data/importedPlaces.json`
 - Simple i18n JSON files in `src/data/i18n/`
 - Browser `localStorage` for mock JWT sessions, accounts, favorites, going status, reviews, admin events, and offline cache
 
@@ -35,6 +36,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Profile page with username, saved items, mock token, and user reviews
 - Basic Admin panel to add/edit/delete events and places manually when scraping or live APIs fail
 - Admin-only Import Events button that refreshes all official sources through the server-side import API
+- Admin-only Import Places button that refreshes food and drink listings through the server-side import API
 - Duplicate event filtering across multiple sources
 - Offline-friendly cache for the last loaded events and places
 - Defensive fallbacks for missing dates, images, locations, and descriptions
@@ -88,6 +90,16 @@ npm run import-events -- --force
 
 The importer preserves Bulgarian titles/descriptions, stores `sourceName`, `sourceUrl`, original image URLs, and `importedAt`. If one source fails or a page shape changes, the import continues with the other sources, keeps cached events visible, logs warnings, and the Admin panel remains available for manual event entry.
 
+## Import Food And Drink Places
+
+Varna Hub also includes a server-side place importer for Glovo, Takeaway, and Tripadvisor. It imports only basic public listing fields such as name, cuisine/category, rating counts where visible, source URL, image URL, opening status, and tags. It does not import full menus or copyrighted review text.
+
+```powershell
+npm run import-places
+```
+
+The frontend calls `/api/import-places`, stores the response in `localStorage`, and refreshes automatically after 24 hours. If a source blocks scraping or returns an error, the API reports the warning, cached places stay visible, and the original mock places remain the fallback.
+
 ## Mock Login
 
 ```text
@@ -115,16 +127,20 @@ src/
   styles.css                 App styling and responsive layout
   services/
     eventImportService.js    Frontend cache + server API client
+    placeImportService.ts    Frontend place cache + server API client
   data/
     importedVisitVarnaEvents.json  Bundled official event import cache
+    importedPlaces.json      Bundled food/place import cache
     varnaMockData.json       Events, places, mock source metadata, demo user
     i18n/
       bg.json                Bulgarian UI strings
       en.json                English UI strings
 server/
   eventImportParsers.mjs     Server-side source parsers
+  placeImportParsers.mjs     Server-side place source parsers
 api/
   import-events.js           Vercel serverless import endpoint
+  import-places.js           Vercel serverless place import endpoint
 ```
 
 ## Connecting Real Data Later

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Varna Hub place placeholder</title>
+  <desc id="desc">A clean fallback image for imported restaurants and cafes without a public image.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff4df"/>
+      <stop offset="0.52" stop-color="#dff3ee"/>
+      <stop offset="1" stop-color="#e8e5f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <circle cx="700" cy="430" r="190" fill="#128f88" opacity=".12"/>
+  <path d="M515 350h370v70c0 102-83 185-185 185s-185-83-185-185z" fill="#128f88"/>
+  <path d="M515 350h370" stroke="#0f5d66" stroke-width="24" stroke-linecap="round"/>
+  <path d="M562 316c0-64 36-103 36-156M700 316c0-64 36-103 36-156M838 316c0-64 36-103 36-156" stroke="#ea5f45" stroke-width="22" stroke-linecap="round" opacity=".88"/>
+  <path d="M455 650h490" stroke="#0f5d66" stroke-width="22" stroke-linecap="round"/>
+  <text x="700" y="745" fill="#0f5d66" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" text-anchor="middle">Varna Hub</text>
+</svg>

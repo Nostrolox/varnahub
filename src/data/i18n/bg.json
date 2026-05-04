@@ -55,7 +55,14 @@
     "restaurants": "Ресторанти",
     "bars": "Барове",
     "cafes": "Кафенета",
-    "street food": "Стрийт фууд"
+    "street food": "Стрийт фууд",
+    "bulgarian": "Българска кухня",
+    "pizza": "Пица",
+    "burgers": "Бургери",
+    "sushi": "Суши",
+    "desserts": "Десерти",
+    "topRated": "Най-високо оценени",
+    "openNow": "Отворени сега"
   },
   "actions": {
     "open": "Отвори",
@@ -82,6 +89,8 @@
     "newPlace": "Ново място",
     "importEvents": "Импортирай събития",
     "importingEvents": "Импортиране...",
+    "importPlaces": "Импортирай места",
+    "importingPlaces": "Импортиране на места...",
     "themeDark": "Превключи към тъмен режим",
     "themeLight": "Превключи към светъл режим",
     "edit": "Редакция",
@@ -162,6 +171,8 @@
     "tagsField": "Тагове",
     "importTitle": "Импорт от Visit Varna",
     "importHelp": "{count} импортирани събития са кеширани. Бутонът обновява всички официални източници през server-side import API.",
+    "importPlacesTitle": "Импорт на храна и напитки",
+    "importPlacesHelp": "{count} импортирани места са кеширани. Бутонът обновява Glovo, Takeaway и Tripadvisor през server-side import API.",
     "importErrors": "{count} предупреждения от източници. Кешираните събития остават видими."
   },
   "quickFilters": {
@@ -187,7 +198,9 @@
     "familyFriendly": "За семейства",
     "outdoor": "Навън",
     "foodNearby": "Храна наблизо",
-    "popular": "Популярно"
+    "popular": "Популярно",
+    "delivery": "Доставка",
+    "topRated": "Топ оценка"
   },
   "messages": {
     "signInToSave": "Влез, за да запазваш.",
@@ -217,6 +230,10 @@
     "importNoNewEvents": "Няма нови събития за импорт.",
     "importPartial": "Импортирани са {count} събития с предупреждения от {sources} източник/източника.",
     "importFailed": "Импортът на събития не успя. Кешираните и ръчните събития остават налични.",
+    "importedPlaces": "Импортирани са {count} места.",
+    "importNoPlaces": "Все още няма импортирани места. Опитай по-късно или въведи мястото ръчно по-долу.",
+    "importPlacesPartial": "Импортирани са {count} места с предупреждения от {sources} източник/източника.",
+    "importPlacesFailed": "Импортът на места не успя. Кешираните и ръчните места остават налични.",
     "accessDenied": "Нямате разрешение за достъп до тази страница.",
     "offlineCache": "Показва се последният локален кеш.",
     "noEvents": "Няма намерени събития.",

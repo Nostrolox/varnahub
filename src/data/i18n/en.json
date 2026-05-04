@@ -55,7 +55,14 @@
     "restaurants": "Restaurants",
     "bars": "Bars",
     "cafes": "Cafes",
-    "street food": "Street food"
+    "street food": "Street food",
+    "bulgarian": "Bulgarian cuisine",
+    "pizza": "Pizza",
+    "burgers": "Burgers",
+    "sushi": "Sushi",
+    "desserts": "Desserts",
+    "topRated": "Top rated",
+    "openNow": "Open now"
   },
   "actions": {
     "open": "Open",
@@ -82,6 +89,8 @@
     "newPlace": "New Place",
     "importEvents": "Import Events",
     "importingEvents": "Importing...",
+    "importPlaces": "Import Places",
+    "importingPlaces": "Importing places...",
     "themeDark": "Switch to dark mode",
     "themeLight": "Switch to light mode",
     "edit": "Edit",
@@ -162,6 +171,8 @@
     "tagsField": "Tags",
     "importTitle": "Visit Varna import",
     "importHelp": "{count} imported events are cached. The button refreshes all official sources through the server-side import API.",
+    "importPlacesTitle": "Food and drink import",
+    "importPlacesHelp": "{count} imported places are cached. The button refreshes Glovo, Takeaway, and Tripadvisor through the server-side import API.",
     "importErrors": "{count} source import warnings. Cached events are still shown."
   },
   "quickFilters": {
@@ -187,7 +198,9 @@
     "familyFriendly": "Family Friendly",
     "outdoor": "Outdoor",
     "foodNearby": "Food Nearby",
-    "popular": "Popular"
+    "popular": "Popular",
+    "delivery": "Delivery",
+    "topRated": "Top rated"
   },
   "messages": {
     "signInToSave": "Sign in to save favorites.",
@@ -217,6 +230,10 @@
     "importNoNewEvents": "No new events to import.",
     "importPartial": "Imported {count} events with warnings from {sources} source(s).",
     "importFailed": "Event import failed. Cached and manual events are still available.",
+    "importedPlaces": "Imported {count} places.",
+    "importNoPlaces": "No imported places are available yet. Try again later or paste place details manually below.",
+    "importPlacesPartial": "Imported {count} places with warnings from {sources} source(s).",
+    "importPlacesFailed": "Place import failed. Cached and manual places are still available.",
     "accessDenied": "You do not have permission to access this page.",
     "offlineCache": "Showing the last local cache.",
     "noEvents": "No matching events.",
