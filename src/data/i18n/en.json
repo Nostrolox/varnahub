@@ -82,6 +82,8 @@
     "newPlace": "New Place",
     "importEvents": "Import Events",
     "importingEvents": "Importing...",
+    "themeDark": "Switch to dark mode",
+    "themeLight": "Switch to light mode",
     "edit": "Edit",
     "delete": "Delete",
     "cancel": "Cancel"

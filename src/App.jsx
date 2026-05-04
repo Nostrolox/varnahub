@@ -290,6 +290,7 @@ function ensureAccountRoles(accounts) {
 
 export default function App() {
   const [language, setLanguage] = useLocalStorage("varnaHub:language", "bg");
+  const [theme, setTheme] = useLocalStorage("varnaHub:theme", "light");
   const dictionary = I18N[language] || I18N.bg;
   const t = (path) => getPath(dictionary, path) || getPath(I18N.en, path) || path;
   const l = (value) => textValue(value, language);
@@ -333,6 +334,11 @@ export default function App() {
     const timer = window.setTimeout(() => setIsLoading(false), 350);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  }, [theme]);
 
   useEffect(() => {
     setAccounts((current) => {
@@ -746,6 +752,7 @@ export default function App() {
     setQuery,
     shareEvent,
     t,
+    theme,
     toggleFavorite,
     toggleGoing,
     toggleQuickFilter,
@@ -763,7 +770,7 @@ export default function App() {
   return (
     <main className="app-shell">
       <div className="app-container">
-        <Header {...props} />
+        <Header {...props} setTheme={setTheme} />
         {isLoading ? (
           <div className="loading-panel">{t("messages.loading")}</div>
         ) : selectedItem ? (
@@ -848,7 +855,7 @@ function commaList(value) {
     .filter(Boolean);
 }
 
-function Header({ activeView, isAdmin, isMenuOpen, language, setActiveView, setIsMenuOpen, setLanguage, t, user, userFavorites, formatDate }) {
+function Header({ activeView, formatDate, isAdmin, isMenuOpen, language, setActiveView, setIsMenuOpen, setLanguage, setTheme, t, theme, user, userFavorites }) {
   const navItems = [
     ["home", t("nav.home")],
     ["events", t("nav.events")],
@@ -858,6 +865,7 @@ function Header({ activeView, isAdmin, isMenuOpen, language, setActiveView, setI
     ["profile", user ? t("nav.profile") : t("nav.account")]
   ];
   if (isAdmin) navItems.push(["admin", t("nav.admin")]);
+  const isDark = theme === "dark";
   return (
     <header className="site-header wide">
       <button className="brand" onClick={() => setActiveView("home")} type="button">
@@ -874,6 +882,15 @@ function Header({ activeView, isAdmin, isMenuOpen, language, setActiveView, setI
         ))}
       </nav>
       <div className="header-tools">
+        <button
+          aria-label={isDark ? t("actions.themeLight") : t("actions.themeDark")}
+          className="theme-toggle"
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          title={isDark ? t("actions.themeLight") : t("actions.themeDark")}
+          type="button"
+        >
+          <span aria-hidden="true">{isDark ? "☀" : "☾"}</span>
+        </button>
         <button className={language === "bg" ? "active" : ""} onClick={() => setLanguage("bg")} type="button">BG</button>
         <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")} type="button">EN</button>
       </div>
