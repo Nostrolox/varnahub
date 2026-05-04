@@ -25,6 +25,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Event cards include View Details, Save, Going, and Share actions
 - Places include Save, OpenStreetMap Directions, and Reviews actions
 - Food and drink recommendations with type, cuisine, rating, review count, price range, opening hours, badges, tags, description, and coordinates
+- Curated Varna places seed data keeps the Places section useful when Glovo, Takeaway, or Tripadvisor block imports
 - Event/place detail pages with reviews, average rating, save actions, gallery, OpenStreetMap links, and map pin
 - Imported events from Visit Varna, Varna Events, and Varna Culture display with their original Bulgarian text, original source image URL when available, and official source URL
 - Tonight fallback card with nearby food/drink recommendations when no events remain
@@ -35,6 +36,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Dedicated Favorites page with Events and Places tabs
 - Profile page with username, saved items, mock token, and user reviews
 - Basic Admin panel to add/edit/delete events and places manually when scraping or live APIs fail
+- User-facing Submit Place form for local food and drink suggestions
 - Admin-only Import Events button that refreshes all official sources through the server-side import API
 - Admin-only Import Places button that refreshes food and drink listings through the server-side import API
 - Duplicate event filtering across multiple sources
@@ -131,6 +133,7 @@ src/
   data/
     importedVisitVarnaEvents.json  Bundled official event import cache
     importedPlaces.json      Bundled food/place import cache
+    varnaPlacesSeed.ts       Curated local seed places for reliable fallback content
     varnaMockData.json       Events, places, mock source metadata, demo user
     i18n/
       bg.json                Bulgarian UI strings

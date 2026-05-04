@@ -4,6 +4,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import mockData from "./data/varnaMockData.json";
 import bg from "./data/i18n/bg.json";
 import en from "./data/i18n/en.json";
+import varnaPlacesSeed from "./data/varnaPlacesSeed";
 import { loadImportedEvents, readImportedEventsCache } from "./services/eventImportService";
 import { loadImportedPlaces, readImportedPlacesCache } from "./services/placeImportService";
 
@@ -250,6 +251,17 @@ function dedupeById(items) {
   return [...seen.values()];
 }
 
+function dedupePlaces(places) {
+  const seen = new Map();
+  for (const place of places) {
+    const key = slug(place.name);
+    if (!key) continue;
+    const current = seen.get(key);
+    if (!current || place.sourceName === "Admin manual" || place.sourceName === "User submitted" || Number(place.rating || 0) > Number(current.rating || 0)) seen.set(key, place);
+  }
+  return [...seen.values()];
+}
+
 function createEmptyAdminEvent(todayValue) {
   return {
     id: "",
@@ -292,11 +304,23 @@ function createEmptyAdminPlace() {
     descriptionBg: "",
     descriptionEn: "",
     openingHours: "10:00-23:00",
+    sourceUrl: "",
     image: "",
     lat: String(VARNA_CENTER.lat),
     lng: String(VARNA_CENTER.lng),
     badges: "verified",
     tags: "varna,food"
+  };
+}
+
+function createEmptySubmitPlace() {
+  return {
+    name: "",
+    type: "restaurants",
+    cuisine: "",
+    priceRange: "$$",
+    location: "",
+    description: ""
   };
 }
 
@@ -351,6 +375,7 @@ export default function App() {
   const [authMode, setAuthMode] = useState("login");
   const [authDraft, setAuthDraft] = useState({ email: "", password: "", username: "" });
   const [reviewDraft, setReviewDraft] = useState({ rating: "5", comment: "" });
+  const [submitPlaceDraft, setSubmitPlaceDraft] = useState(createEmptySubmitPlace);
   const [adminEventDraft, setAdminEventDraft] = useState(() => createEmptyAdminEvent(todayValue));
   const [adminPlaceDraft, setAdminPlaceDraft] = useState(() => createEmptyAdminPlace());
   const [isImportingEvents, setIsImportingEvents] = useState(false);
@@ -424,13 +449,13 @@ export default function App() {
     () => [...(mockData.events || []), ...(importedEvents || [])].map((event) => normalizeEvent(event, today)),
     [importedEvents, today]
   );
-  const seedPlaces = useMemo(() => [...(mockData.places || []), ...(importedPlaces || [])].map(normalizePlace), [importedPlaces]);
+  const seedPlaces = useMemo(() => [...(mockData.places || []), ...varnaPlacesSeed, ...(importedPlaces || [])].map(normalizePlace), [importedPlaces]);
   const events = useMemo(
     () => dedupeEvents([...seedEvents, ...localEvents.map((event) => normalizeEvent(event, today))].filter((event) => !deletedEventIds.includes(event.id)), language),
     [deletedEventIds, language, localEvents, seedEvents, today]
   );
   const places = useMemo(
-    () => dedupeById([...seedPlaces, ...localPlaces.map(normalizePlace)].filter((place) => !deletedPlaceIds.includes(place.id))),
+    () => dedupePlaces(dedupeById([...seedPlaces, ...localPlaces.map(normalizePlace)].filter((place) => !deletedPlaceIds.includes(place.id)))),
     [deletedPlaceIds, localPlaces, seedPlaces]
   );
 
@@ -643,6 +668,8 @@ export default function App() {
       location: { bg: adminPlaceDraft.locationBg, en: adminPlaceDraft.locationEn || adminPlaceDraft.locationBg },
       description: { bg: adminPlaceDraft.descriptionBg, en: adminPlaceDraft.descriptionEn || adminPlaceDraft.descriptionBg },
       openingHours: adminPlaceDraft.openingHours,
+      sourceName: "Admin manual",
+      sourceUrl: adminPlaceDraft.sourceUrl,
       image: safeImage(adminPlaceDraft.image),
       coordinates: { lat: Number(adminPlaceDraft.lat) || VARNA_CENTER.lat, lng: Number(adminPlaceDraft.lng) || VARNA_CENTER.lng },
       badges: commaList(adminPlaceDraft.badges),
@@ -701,6 +728,7 @@ export default function App() {
       descriptionBg: place.description?.bg || l(place.description),
       descriptionEn: place.description?.en || l(place.description),
       openingHours: place.openingHours || "",
+      sourceUrl: place.sourceUrl || "",
       image: place.image || "",
       lat: String(place.lat),
       lng: String(place.lng),
@@ -766,6 +794,33 @@ export default function App() {
     }
   }
 
+  function submitPlace(event) {
+    event.preventDefault();
+    if (!submitPlaceDraft.name.trim() || !submitPlaceDraft.location.trim()) return showToast(t("messages.missingPlaceFields"));
+    const record = normalizePlace({
+      id: `place-user-${Date.now()}`,
+      name: submitPlaceDraft.name.trim(),
+      type: submitPlaceDraft.type,
+      category: submitPlaceDraft.type,
+      cuisine: { bg: submitPlaceDraft.cuisine || t("categories.restaurants"), en: submitPlaceDraft.cuisine || "Restaurant" },
+      priceRange: submitPlaceDraft.priceRange,
+      location: { bg: submitPlaceDraft.location.trim(), en: submitPlaceDraft.location.trim() },
+      description: { bg: submitPlaceDraft.description, en: submitPlaceDraft.description },
+      openingHours: "",
+      sourceName: "User submitted",
+      sourceUrl: "",
+      image: "/place-placeholder.svg",
+      coordinates: VARNA_CENTER,
+      badges: ["foodNearby"],
+      tags: ["user-submitted", submitPlaceDraft.type, submitPlaceDraft.cuisine].filter(Boolean),
+      reviews: [],
+      rating: 0
+    });
+    setLocalPlaces((current) => [record, ...current]);
+    setSubmitPlaceDraft(createEmptySubmitPlace());
+    showToast(t("messages.placeSubmitted"));
+  }
+
   const props = {
     accounts,
     activeView,
@@ -818,6 +873,9 @@ export default function App() {
     setPlaceSort,
     setQuery,
     shareEvent,
+    setSubmitPlaceDraft,
+    submitPlace,
+    submitPlaceDraft,
     t,
     theme,
     toggleFavorite,
@@ -1045,7 +1103,7 @@ function EventsView(props) {
 }
 
 function PlacesView(props) {
-  const { placeCategory, placeSort, query, setPlaceCategory, setPlaceSort, setQuery, t, visiblePlaces } = props;
+  const { placeCategory, placeImportErrors = [], placeSort, query, setPlaceCategory, setPlaceSort, setQuery, t, visiblePlaces } = props;
   return (
     <section className="view-stack">
       <SectionTitle kicker={t("home.foodKicker")} title={t("nav.places")} />
@@ -1054,8 +1112,25 @@ function PlacesView(props) {
         <SelectField label={t("filters.category")} labels={categoryLabels(t)} onChange={setPlaceCategory} options={PLACE_FILTERS} value={placeCategory} />
         <SelectField label={t("filters.sort")} labels={optionLabels(t)} onChange={setPlaceSort} options={["rating", "price"]} value={placeSort} />
       </div>
+      {placeImportErrors.length > 0 && <div className="fallback-card compact-warning"><h3>{t("messages.placeImportWarning")}</h3><p>{t("messages.placeSeedFallback")}</p></div>}
       {visiblePlaces.length ? <div className="card-grid two">{visiblePlaces.map((place) => <PlaceCard {...props} key={place.id} place={place} />)}</div> : <EmptyState title={t("messages.noPlaces")} text={t("messages.tryDifferent")} />}
+      <SubmitPlaceForm {...props} />
     </section>
+  );
+}
+
+function SubmitPlaceForm({ setSubmitPlaceDraft, submitPlace, submitPlaceDraft, t }) {
+  return (
+    <form className="form-panel submit-place-form" onSubmit={submitPlace}>
+      <SectionTitle kicker={t("places.submitKicker")} title={t("places.submitTitle")} />
+      <LabelInput label={t("admin.titleField")} onChange={(value) => setSubmitPlaceDraft((draft) => ({ ...draft, name: value }))} value={submitPlaceDraft.name} />
+      <label><span>{t("admin.categoryField")}</span><select value={submitPlaceDraft.type} onChange={(event) => setSubmitPlaceDraft((draft) => ({ ...draft, type: event.target.value }))}>{PLACE_CATEGORIES.filter((item) => item !== "all").map((category) => <option key={category} value={category}>{t(`categories.${category}`)}</option>)}</select></label>
+      <LabelInput label={t("details.cuisine")} onChange={(value) => setSubmitPlaceDraft((draft) => ({ ...draft, cuisine: value }))} value={submitPlaceDraft.cuisine} />
+      <LabelInput label={t("details.price")} onChange={(value) => setSubmitPlaceDraft((draft) => ({ ...draft, priceRange: value }))} value={submitPlaceDraft.priceRange} />
+      <LabelInput label={t("admin.locationField")} onChange={(value) => setSubmitPlaceDraft((draft) => ({ ...draft, location: value }))} value={submitPlaceDraft.location} />
+      <LabelInput label={t("admin.descriptionField")} onChange={(value) => setSubmitPlaceDraft((draft) => ({ ...draft, description: value }))} value={submitPlaceDraft.description} />
+      <button className="primary-action" type="submit">{t("actions.submitPlace")}</button>
+    </form>
   );
 }
 
@@ -1129,6 +1204,7 @@ function DetailsView(props) {
             </div>
             <div className="actions-row">
               <a className="primary-action" href={osmUrl} rel="noreferrer" target="_blank">{t("actions.openOsm")}</a>
+              {!isEvent && item.sourceUrl && <a className="secondary-action" href={item.sourceUrl} rel="noreferrer" target="_blank">{t("details.source")}</a>}
               <button className={isFavorite ? "secondary-action active" : "secondary-action"} onClick={() => toggleFavorite(selectedType, item.id)} type="button">{isFavorite ? t("actions.saved") : t("actions.save")}</button>
               {isEvent && <button className={userGoing.includes(item.id) ? "secondary-action active" : "secondary-action"} onClick={() => toggleGoing(item.id)} type="button">{userGoing.includes(item.id) ? t("actions.going") : t("actions.markGoing")}</button>}
               {isEvent && <button className="secondary-action" onClick={() => shareEvent(item)} type="button">{t("actions.share")}</button>}
@@ -1375,6 +1451,7 @@ function AdminPlaceForm({ draft, save, setDraft, t }) {
       <LabelInput label={`${t("admin.descriptionField")} BG`} onChange={(value) => setDraft((d) => ({ ...d, descriptionBg: value }))} value={draft.descriptionBg} />
       <LabelInput label={`${t("admin.descriptionField")} EN`} onChange={(value) => setDraft((d) => ({ ...d, descriptionEn: value }))} value={draft.descriptionEn} />
       <LabelInput label={t("admin.openingHoursField")} onChange={(value) => setDraft((d) => ({ ...d, openingHours: value }))} value={draft.openingHours} />
+      <LabelInput label={t("admin.sourceUrlField")} onChange={(value) => setDraft((d) => ({ ...d, sourceUrl: value }))} value={draft.sourceUrl} />
       <LabelInput label={t("admin.imageField")} onChange={(value) => setDraft((d) => ({ ...d, image: value }))} value={draft.image} />
       <LabelInput label={t("admin.latField")} onChange={(value) => setDraft((d) => ({ ...d, lat: value }))} value={draft.lat} />
       <LabelInput label={t("admin.lngField")} onChange={(value) => setDraft((d) => ({ ...d, lng: value }))} value={draft.lng} />

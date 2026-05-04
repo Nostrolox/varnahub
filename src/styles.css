@@ -585,6 +585,11 @@ img {
   padding: 16px;
 }
 
+.compact-warning {
+  gap: 6px;
+  padding: 18px;
+}
+
 .filters-panel {
   border-radius: 8px;
   display: grid;
@@ -1067,6 +1072,15 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.submit-place-form {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.submit-place-form .section-title,
+.submit-place-form .primary-action {
+  grid-column: 1 / -1;
+}
+
 .admin-import-panel {
   align-items: center;
   grid-template-columns: 1fr auto;
@@ -1318,7 +1332,8 @@ img {
   .info-grid,
   .detail-extra-grid,
   .admin-import-panel,
-  .admin-form {
+  .admin-form,
+  .submit-place-form {
     grid-template-columns: 1fr;
   }
 

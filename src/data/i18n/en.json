@@ -85,6 +85,7 @@
     "createAccount": "Create Account",
     "saveEvent": "Save Event",
     "savePlace": "Save Place",
+    "submitPlace": "Submit Place",
     "newEvent": "New Event",
     "newPlace": "New Place",
     "importEvents": "Import Events",
@@ -138,6 +139,10 @@
     "places": "Places",
     "emptyEvents": "No saved events yet.",
     "emptyPlaces": "No saved places yet."
+  },
+  "places": {
+    "submitKicker": "Community suggestion",
+    "submitTitle": "Submit Place"
   },
   "reviews": {
     "title": "Reviews",
@@ -220,6 +225,7 @@
     "placeSaved": "Place saved.",
     "placeUpdated": "Place updated.",
     "placeDeleted": "Place deleted.",
+    "placeSubmitted": "Place submitted.",
     "shareCopied": "Share link copied.",
     "goingUpdated": "Going status updated.",
     "favoriteUpdated": "Favorites updated.",
@@ -234,6 +240,8 @@
     "importNoPlaces": "No imported places are available yet. Try again later or paste place details manually below.",
     "importPlacesPartial": "Imported {count} places with warnings from {sources} source(s).",
     "importPlacesFailed": "Place import failed. Cached and manual places are still available.",
+    "placeImportWarning": "External place import is limited right now.",
+    "placeSeedFallback": "Showing curated Varna places, saved local entries, and any cached imports.",
     "accessDenied": "You do not have permission to access this page.",
     "offlineCache": "Showing the last local cache.",
     "noEvents": "No matching events.",
