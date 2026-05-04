@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import importedVisitVarnaEvents from "./data/importedVisitVarnaEvents.json";
 import mockData from "./data/varnaMockData.json";
 import bg from "./data/i18n/bg.json";
 import en from "./data/i18n/en.json";
+import { loadImportedEvents, readImportedEventsCache } from "./services/eventImportService";
 
 const VARNA_CENTER = { lat: 43.2047, lng: 27.9105 };
 const I18N = { bg, en };
@@ -153,6 +153,9 @@ function normalizeEvent(event, today) {
   const date = event.date || dateKey(addDays(today, Number(event.dayOffset || 0)));
   const startTime = event.startTime || event.time || "19:00";
   const images = event.images || event.gallery || [event.image];
+  const source = event.source || event.sourceName || "";
+  const organizer = typeof event.organizer === "string" ? { name: event.organizer, link: event.sourceUrl || "", contact: "" } : event.organizer || { name: "", link: "", contact: "" };
+  const ticket = event.ticket || { price: "", link: event.ticketUrl || "" };
   const normalized = {
     ...event,
     id: event.id,
@@ -170,10 +173,14 @@ function normalizeEvent(event, today) {
     fullDescription: event.fullDescription || event.richDescription || event.description,
     images,
     image: safeImage(event.image || images?.[0]),
-    organizer: event.organizer || { name: "", link: "", contact: "" },
-    ticket: event.ticket || { price: "Free", link: "" },
+    organizer,
+    ticket,
     schedule: event.schedule || [],
-    tags: event.tags || [event.category, event.venue, event.organizer?.name].filter(Boolean),
+    source,
+    sourceName: event.sourceName || source,
+    sourceUrl: event.sourceUrl || "",
+    importedAt: event.importedAt || event.lastUpdated || "",
+    tags: event.tags || [event.category, event.venue, organizer.name].filter(Boolean),
     rating: event.rating || averageRating(event),
     reviewsCount: event.reviewsCount || (event.reviews || []).length,
     popularityScore: event.popularityScore || event.basePopularity || event.popularity || 50
@@ -313,11 +320,14 @@ export default function App() {
   const [deletedEventIds, setDeletedEventIds] = useLocalStorage("varnaHub:deletedEvents", []);
   const [deletedPlaceIds, setDeletedPlaceIds] = useLocalStorage("varnaHub:deletedPlaces", []);
   const [cache, setCache] = useLocalStorage("varnaHub:offlineCache:v2", { events: [], places: [], timestamp: null });
+  const [importedEvents, setImportedEvents] = useState(readImportedEventsCache());
   const [authMode, setAuthMode] = useState("login");
   const [authDraft, setAuthDraft] = useState({ email: "", password: "", username: "" });
   const [reviewDraft, setReviewDraft] = useState({ rating: "5", comment: "" });
   const [adminEventDraft, setAdminEventDraft] = useState(() => createEmptyAdminEvent(todayValue));
   const [adminPlaceDraft, setAdminPlaceDraft] = useState(() => createEmptyAdminPlace());
+  const [isImportingEvents, setIsImportingEvents] = useState(false);
+  const [importErrors, setImportErrors] = useState([]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsLoading(false), 350);
@@ -330,6 +340,21 @@ export default function App() {
       return JSON.stringify(next) === JSON.stringify(current) ? current : next;
     });
   }, [setAccounts]);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadImportedEvents()
+      .then((result) => {
+        if (cancelled) return;
+        setImportedEvents(result.events);
+        setImportErrors(result.errors || []);
+        if (result.errors?.length) console.warn("[event-import] Startup import completed with source errors:", result.errors);
+      })
+      .catch((error) => console.warn("[event-import] Startup import failed safely:", error));
+    return () => {
+      cancelled = true;
+    };
+  }, [setImportedEvents]);
 
   const user = accounts.find((account) => account.id === session?.userId) || null;
   // TODO: This is frontend-only mock access control. Production admin security should use Supabase, Firebase, Auth0, or a backend with server-side role checks.
@@ -347,8 +372,8 @@ export default function App() {
   }, [activeView, user]);
 
   const seedEvents = useMemo(
-    () => [...(mockData.events || []), ...(importedVisitVarnaEvents || [])].map((event) => normalizeEvent(event, today)),
-    [today]
+    () => [...(mockData.events || []), ...(importedEvents || [])].map((event) => normalizeEvent(event, today)),
+    [importedEvents, today]
   );
   const seedPlaces = useMemo(() => (mockData.places || []).map(normalizePlace), []);
   const events = useMemo(
@@ -650,21 +675,26 @@ export default function App() {
     showToast(t("messages.placeDeleted"));
   }
 
-  function importVisitVarnaEvents() {
+  async function importEventsFromSources() {
     if (!requireAdmin()) return;
-    const records = (importedVisitVarnaEvents || []).map((event) => normalizeEvent(event, today));
-    if (!records.length) return showToast(t("messages.importNoEvents"));
-
-    const existingKeys = new Set(localEvents.map((event) => naturalEventKey(normalizeEvent(event, today), "bg")));
-    const newRecords = records.filter((record) => {
-      const key = naturalEventKey(record, "bg");
-      if (existingKeys.has(key)) return false;
-      existingKeys.add(key);
-      return true;
-    });
-    setLocalEvents((current) => [...newRecords, ...current]);
-    setDeletedEventIds((current) => current.filter((id) => !records.some((record) => record.id === id)));
-    showToast(newRecords.length ? t("messages.importedEvents").replace("{count}", newRecords.length) : t("messages.importNoNewEvents"));
+    setIsImportingEvents(true);
+    try {
+      const result = await loadImportedEvents({ force: true });
+      const records = result.events.map((event) => normalizeEvent(event, today));
+      setImportedEvents(result.events);
+      setImportErrors(result.errors || []);
+      setDeletedEventIds((current) => current.filter((id) => !records.some((record) => record.id === id)));
+      if (result.errors?.length) {
+        showToast(t("messages.importPartial").replace("{count}", records.length).replace("{sources}", result.errors.length));
+      } else {
+        showToast(records.length ? t("messages.importedEvents").replace("{count}", records.length) : t("messages.importNoEvents"));
+      }
+    } catch (error) {
+      console.warn("[event-import] Admin import failed safely:", error);
+      showToast(t("messages.importFailed"));
+    } finally {
+      setIsImportingEvents(false);
+    }
   }
 
   const props = {
@@ -682,8 +712,10 @@ export default function App() {
     formatDate,
     isMenuOpen,
     isAdmin,
-    importVisitVarnaEvents,
-    importedEventsCount: (importedVisitVarnaEvents || []).length,
+    importErrors,
+    importEventsFromSources,
+    importedEventsCount: (importedEvents || []).length,
+    isImportingEvents,
     language,
     l,
     locale,
@@ -1155,7 +1187,7 @@ function ProfileView({ authDraft, authMode, events, handleAuthSubmit, l, logout,
 }
 
 function AdminView(props) {
-  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, importVisitVarnaEvents, importedEventsCount, l, places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
+  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, importErrors = [], importEventsFromSources, importedEventsCount, isImportingEvents, l, places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
   return (
     <section className="view-stack">
       <SectionTitle kicker={t("admin.kicker")} title={t("admin.title")} />
@@ -1169,8 +1201,9 @@ function AdminView(props) {
             <div>
               <h2>{t("admin.importTitle")}</h2>
               <p>{t("admin.importHelp").replace("{count}", importedEventsCount || 0)}</p>
+              {importErrors.length > 0 && <p>{t("admin.importErrors").replace("{count}", importErrors.length)}</p>}
             </div>
-            <button className="primary-action" onClick={importVisitVarnaEvents} type="button">{t("actions.importEvents")}</button>
+            <button className="primary-action" disabled={isImportingEvents} onClick={importEventsFromSources} type="button">{isImportingEvents ? t("actions.importingEvents") : t("actions.importEvents")}</button>
           </div>
           <AdminEventForm draft={adminEventDraft} save={saveAdminEvent} setDraft={setAdminEventDraft} t={t} />
           <AdminList deleteItem={deleteAdminEvent} editItem={editAdminEvent} items={events} label={(event) => `${l(event.title)} - ${l(event.location)}`} t={t} />

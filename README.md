@@ -8,7 +8,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Tailwind CSS plus custom responsive CSS
 - Leaflet with OpenStreetMap tiles
 - Mock JSON data in `src/data/varnaMockData.json`
-- Local Visit Varna importer cache in `src/data/importedVisitVarnaEvents.json`
+- Server-side event import from Visit Varna, Varna Events, and Varna Culture, with a bundled cache in `src/data/importedVisitVarnaEvents.json`
 - Simple i18n JSON files in `src/data/i18n/`
 - Browser `localStorage` for mock JWT sessions, accounts, favorites, going status, reviews, admin events, and offline cache
 
@@ -25,7 +25,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Places include Save, OpenStreetMap Directions, and Reviews actions
 - Food and drink recommendations with type, cuisine, rating, review count, price range, opening hours, badges, tags, description, and coordinates
 - Event/place detail pages with reviews, average rating, save actions, gallery, OpenStreetMap links, and map pin
-- Visit Varna imported events display with their original Bulgarian text, original source image URL when available, and official source URL
+- Imported events from Visit Varna, Varna Events, and Varna Culture display with their original Bulgarian text, original source image URL when available, and official source URL
 - Tonight fallback card with nearby food/drink recommendations when no events remain
 - Near-event food suggestions based on coordinate distance
 - Interactive OpenStreetMap view with simple visual clustering for nearby markers
@@ -34,7 +34,7 @@ Varna Hub is a browser-first React application for discovering events and nearby
 - Dedicated Favorites page with Events and Places tabs
 - Profile page with username, saved items, mock token, and user reviews
 - Basic Admin panel to add/edit/delete events and places manually when scraping or live APIs fail
-- Admin-only Visit Varna import sync button for the latest bundled local import cache
+- Admin-only Import Events button that refreshes all official sources through the server-side import API
 - Duplicate event filtering across multiple sources
 - Offline-friendly cache for the last loaded events and places
 - Defensive fallbacks for missing dates, images, locations, and descriptions
@@ -66,21 +66,27 @@ npm run build
 
 The production output is written to `dist/`.
 
-## Import Visit Varna Events
+## Import Official Varna Events
 
-The app includes a respectful local importer for the public Visit Varna events page. It fetches only when manually triggered and skips refreshes if the import cache was updated in the last 24 hours.
+The app includes a respectful server-side importer for official Varna event sources:
+
+- `https://visit.varna.bg`
+- `https://varna.events`
+- `https://varnaculture.bg`
+
+The browser does not scrape these sites directly. It calls `/api/import-events`, which runs the parsers server-side to avoid CORS issues. The frontend stores imported events in `localStorage` and refreshes them automatically when the cache is older than 12 hours.
 
 ```powershell
 npm run import-events
 ```
 
-Use this before building or deploying to Vercel so the generated `src/data/importedVisitVarnaEvents.json` is bundled into the static site. To manually refresh sooner while developing:
+Use this local script before building or deploying to Vercel if you want to refresh the bundled fallback cache. To manually refresh sooner while developing:
 
 ```powershell
 npm run import-events -- --force
 ```
 
-The importer preserves Bulgarian titles/descriptions, stores `source: "Visit Varna"`, `sourceUrl`, original image URLs, and `lastUpdated`. If Visit Varna is unavailable or the page shape changes, the script keeps the existing cache and the Admin panel remains available for manual event entry.
+The importer preserves Bulgarian titles/descriptions, stores `sourceName`, `sourceUrl`, original image URLs, and `importedAt`. If one source fails or a page shape changes, the import continues with the other sources, keeps cached events visible, logs warnings, and the Admin panel remains available for manual event entry.
 
 ## Mock Login
 
@@ -107,12 +113,18 @@ src/
   App.jsx                    Main Varna Hub application
   main.jsx                   React entry point and Leaflet CSS import
   styles.css                 App styling and responsive layout
+  services/
+    eventImportService.js    Frontend cache + server API client
   data/
-    importedVisitVarnaEvents.json  Local Visit Varna import cache
+    importedVisitVarnaEvents.json  Bundled official event import cache
     varnaMockData.json       Events, places, mock source metadata, demo user
     i18n/
       bg.json                Bulgarian UI strings
       en.json                English UI strings
+server/
+  eventImportParsers.mjs     Server-side source parsers
+api/
+  import-events.js           Vercel serverless import endpoint
 ```
 
 ## Connecting Real Data Later

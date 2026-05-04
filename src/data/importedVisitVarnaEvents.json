@@ -1,1 +1,1237 @@
-[]
+[
+  {
+    "id": "visit-varna-ae5a9bbde4dd",
+    "title": "100 години Международен музикален фестивал „Варненско лято\"",
+    "category": "concerts",
+    "date": "2026-06-27",
+    "startTime": "00:00",
+    "endTime": "15:31",
+    "location": "Фестивален и конгресен център, Градска художествена галерия „Борис Георгиев“, Летен театър, Аула на ИУ, двор на РИМ - Варна",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "100 години Международен музикален фестивал Варненско лято Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна,",
+    "fullDescription": "100 години Международен музикален фестивал Варненско лято Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод",
+    "images": [
+      "https://visit.varna.bg/media/images/d4/50//summer.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/100-godini-mezhdunaroden-muzikalen-festival-varnen.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/d4/50//summer.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-b31b7d268eda",
+    "title": "„Рим“ - изложба живопис",
+    "category": "culture",
+    "date": "2026-04-16",
+    "startTime": "00:00",
+    "endTime": "16:54",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/da/ba//rim.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/rim-izlozhba-zhivopis.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/da/ba//rim.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-326af279e2b3",
+    "title": "Изложба на икони в Светлата седмица на Росен Германов - Даскала",
+    "category": "culture",
+    "date": "2026-04-16",
+    "startTime": "00:00",
+    "endTime": "09:31",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/d5/79//City_Gallery.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/izlozhba-na-ikoni-v-svetlata-sedmitsa-na-rosen-ger.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/d5/79//City_Gallery.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-54090323a440",
+    "title": "„Върху хартия“ - изложба",
+    "category": "culture",
+    "date": "2026-04-17",
+    "startTime": "00:00",
+    "endTime": "12:22",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/05/de//4556.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/varhu-hartiya-izlozhba.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/05/de//4556.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-0a2e6b74e9bc",
+    "title": "„Априлското въстание в българската филателия“ - изложба",
+    "category": "culture",
+    "date": "2026-04-18",
+    "startTime": "00:00",
+    "endTime": "12:52",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Априлското въстание в българската филателия - изложба Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, авто",
+    "fullDescription": "Априлското въстание в българската филателия - изложба Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод",
+    "images": [
+      "https://visit.varna.bg/media/images/c4/2c//56778.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/aprilskoto-vastanie-v-balgarskata-filateliya-izloz.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/c4/2c//56778.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-64fb2c7f4e19",
+    "title": "„Безвремие“ - изложба живопис",
+    "category": "culture",
+    "date": "2026-04-21",
+    "startTime": "00:00",
+    "endTime": "09:45",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/94/c4//bezvremie.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/bezvremie-izlozhba-zhivopis.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/94/c4//bezvremie.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-92e801822979",
+    "title": "„Град и Море“ - изложба живопис и керамика",
+    "category": "culture",
+    "date": "2026-04-21",
+    "startTime": "00:00",
+    "endTime": "09:55",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/dd/3d//radi_more.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/grad-i-more-izlozhba-zhivopis-i-keramika.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/dd/3d//radi_more.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-d9231f484e68",
+    "title": "„TRACE - България/Полша/Италия“ - изложба",
+    "category": "culture",
+    "date": "2026-04-21",
+    "startTime": "00:00",
+    "endTime": "10:04",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/8d/b2//dimo.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/trace-balgariyapolshaitaliya-izlozhba.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/8d/b2//dimo.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-501c76fe90e1",
+    "title": "„Пенчо Славейков. Знаци на почит” - изложба",
+    "category": "culture",
+    "date": "2026-04-27",
+    "startTime": "00:00",
+    "endTime": "08:55",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/11/ad//Presslist_Izlozhba_Pencho_Slaveykov.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/pencho-slaveykov-znatsi-na-pochit-izlozhba.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/11/ad//Presslist_Izlozhba_Pencho_Slaveykov.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-05c0db7fd43b",
+    "title": "„Присъствие” - изложба живопис и рисунка",
+    "category": "culture",
+    "date": "2026-04-28",
+    "startTime": "00:00",
+    "endTime": "16:59",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/d0/94//786.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/otvad-gravitatsiyata-izlozhba-zhivopis.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/d0/94//786.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-7859c05826fc",
+    "title": "„Розово слънце“ - изложба",
+    "category": "culture",
+    "date": "2026-04-28",
+    "startTime": "00:00",
+    "endTime": "15:57",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/22/ae//1_3_2_.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/rozovo-slantse-izlozhba.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/22/ae//1_3_2_.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-8f3302376224",
+    "title": "Sunwaves Festival - пролетно издание",
+    "category": "festivals",
+    "date": "2026-04-30",
+    "startTime": "00:00",
+    "endTime": "13:20",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/35/b7//6767.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/sunwaves-festival-proletno-izdanie.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "festivals"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/35/b7//6767.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "visit-varna-0ce896827a39",
+    "title": "„Дух”-мюзикъл",
+    "category": "concerts",
+    "date": "2026-05-05",
+    "startTime": "19:00",
+    "endTime": "00:00",
+    "location": "[related_product_id] =>",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигат",
+    "fullDescription": "Анита Атанасова - СПА Мениджър в хотел Грифид Енканто Бийч Николай Попов - ръководител на СПА и Медикъл центъра на Ensana Aquahouse Християн Облаков, изследовател на архитектурната история на Варна, автор и екскурзовод Туристически маршрути за хора с двигателни затруднения",
+    "images": [
+      "https://visit.varna.bg/media/images/a0/b7//4455.jpg"
+    ],
+    "sourceName": "Visit Varna",
+    "sourceUrl": "https://visit.varna.bg/bg/event/duhmyuzikal.html",
+    "ticketUrl": null,
+    "organizer": "Visit Varna",
+    "tags": [
+      "Visit Varna",
+      "varna",
+      "visit-varna",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://visit.varna.bg/media/images/a0/b7//4455.jpg",
+    "source": "Visit Varna"
+  },
+  {
+    "id": "varna-events-44675e3acfeb",
+    "title": "понеделник, 04 май Силвия Богоева изложба живопис и рисунка",
+    "category": "culture",
+    "date": "2026-04-28",
+    "startTime": "10:00",
+    "endTime": "19:00",
+    "location": "Art Gallery Le Papillon, Варна ЦентърОдесос, ул. „Драгоман“ 12, 9000 Варна, България",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "С удоволствие от 28-ми април до 20-ти май 2026 г. Арт Галерия Le Papillon представя за пръв път в пространството си със самостоятелна изложба творчеството на талантливата Силвия Богоева. “Присъствие” е една изложба посветена изцяло на човека. В нея се включен",
+    "fullDescription": "С удоволствие от 28-ми април до 20-ти май 2026 г. Арт Галерия Le Papillon представя за пръв път в пространството си със самостоятелна изложба творчеството на талантливата Силвия Богоева. “Присъствие” е една изложба посветена изцяло на човека. В нея се включени както “чисти” портрети без назоваване на конкретни места и случки, така и композиции от лични преживявания, изпълнени в техники масло и въглен. Обединява ги темата за Човека, която е и основна в творческите търсения на авторката. Човекът, представен като обект на духовно присъствие, лишен от материалното си съзнание.",
+    "images": [
+      "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg"
+    ],
+    "sourceName": "Varna Events",
+    "sourceUrl": "https://varna.events/",
+    "ticketUrl": null,
+    "organizer": "Община Варна",
+    "tags": [
+      "Varna Events",
+      "varna",
+      "varna-events",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg",
+    "source": "Varna Events"
+  },
+  {
+    "id": "varna-events-4b7416b55bd6",
+    "title": "„Под игото“",
+    "category": "culture",
+    "date": "2026-05-04",
+    "startTime": "19:00",
+    "endTime": "21:20",
+    "location": "Драматичен театър „Стоян Бъчваров“ - Варна, ТМПЦ - Варна, Драматичен театър ”Стоян Бъчваров, Основна сцена, Драматичен театър ”Стоян Бъчваров” - филиал, Варна ЦентърОдесос, пл. „Независимост“ 1, 9000 Варна, България",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "„Под игото“ по мотиви от романа на Иван Вазов",
+    "fullDescription": "„Под игото“ по мотиви от романа на Иван Вазов",
+    "images": [
+      "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg"
+    ],
+    "sourceName": "Varna Events",
+    "sourceUrl": "https://varna.events/",
+    "ticketUrl": null,
+    "organizer": "Община Варна",
+    "tags": [
+      "Varna Events",
+      "varna",
+      "varna-events",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg",
+    "source": "Varna Events"
+  },
+  {
+    "id": "varna-events-7c34dcee365e",
+    "title": "понеделник, 04 май 19:00 - 21:20",
+    "category": "culture",
+    "date": "2026-05-04",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "„Под игото“",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "по мотиви от романа на Иван Вазов",
+    "fullDescription": "по мотиви от романа на Иван Вазов",
+    "images": [
+      "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg"
+    ],
+    "sourceName": "Varna Events",
+    "sourceUrl": "https://varna.events/",
+    "ticketUrl": null,
+    "organizer": "Община Варна",
+    "tags": [
+      "Varna Events",
+      "varna",
+      "varna-events",
+      "culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varna.events/wp-content/uploads/2025/08/varna-events-bg.svg",
+    "source": "Varna Events"
+  },
+  {
+    "id": "varna-culture-5216a23208ca",
+    "title": "Предстоящи събития",
+    "category": "culture",
+    "date": "2026-05-12",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Наполетано",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Предстоящи събития",
+    "fullDescription": "Предстоящи събития Вторник, 12/05/2026г. Наполетано",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-13f08023d606",
+    "title": "Наполетано",
+    "category": "festivals",
+    "date": "2026-05-12",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Фестивален и конгресен център Варна",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Наполетано",
+    "fullDescription": "Наполетано Вторник, 12/05/2026г. Фестивален и конгресен център Варна",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "festivals"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-b803aec008ca",
+    "title": "„Царят на инструментите и неговото царство“",
+    "category": "festivals",
+    "date": "2026-05-26",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Фестивален и конгресен център Варна",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "„Царят на инструментите и неговото царство“",
+    "fullDescription": "„Царят на инструментите и неговото царство“ Вторник, 26/05/2026г. Фестивален и конгресен център Варна",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "festivals"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-31fdafda7ae9",
+    "title": "„Най-шастливият човек“ – опера приказка",
+    "category": "concerts",
+    "date": "2026-05-31",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "КОНЦЕРТ - АВТОРСКА ВЕЧЕР НА ТЕОДОСИЙ СПАСОВ",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "„Най-шастливият човек“ – опера приказка",
+    "fullDescription": "„Най-шастливият човек“ – опера приказка Неделя, 31/05/2026г. КОНЦЕРТ - АВТОРСКА ВЕЧЕР НА ТЕОДОСИЙ СПАСОВ",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-afb1751ac38a",
+    "title": "КОНЦЕРТ - АВТОРСКА ВЕЧЕР НА ТЕОДОСИЙ СПАСОВ",
+    "category": "concerts",
+    "date": "2026-06-01",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Фестивален и конгресен център Варна",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "КОНЦЕРТ - АВТОРСКА ВЕЧЕР НА ТЕОДОСИЙ СПАСОВ",
+    "fullDescription": "КОНЦЕРТ - АВТОРСКА ВЕЧЕР НА ТЕОДОСИЙ СПАСОВ Понеделник, 01/06/2026г. Фестивален и конгресен център Варна",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-ae581ed11c99",
+    "title": "\"ЙОАН - СИНЪТ НА ГЪРМА\"",
+    "category": "festivals",
+    "date": "2026-06-12",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Фестивален и конгресен център Варна",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "\"ЙОАН - СИНЪТ НА ГЪРМА\"",
+    "fullDescription": "\"ЙОАН - СИНЪТ НА ГЪРМА\" Петък, 12/06/2026г. Фестивален и конгресен център Варна",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "festivals"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-ac35ff068a8e",
+    "title": "\"Красавицата и звяра\" - концерт в костюми",
+    "category": "concerts",
+    "date": "2026-06-19",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Театрално-музикален продуцентски център",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "\"Красавицата и звяра\" - концерт в костюми",
+    "fullDescription": "\"Красавицата и звяра\" - концерт в костюми Петък, 19/06/2026г. Театрално-музикален продуцентски център",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-7a7f971922bc",
+    "title": "ММФ \"ВАРНЕНСКО ЛЯТО\" 2026: Официално откриване",
+    "category": "concerts",
+    "date": "2026-06-27",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Кралски камерен оркестър на Валония, Белгия",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "ММФ \"ВАРНЕНСКО ЛЯТО\" 2026: Официално откриване",
+    "fullDescription": "ММФ \"ВАРНЕНСКО ЛЯТО\" 2026: Официално откриване Събота, 27/06/2026г. Кралски камерен оркестър на Валония, Белгия",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-c43664874e64",
+    "title": "Кралски камерен оркестър на Валония, Белгия",
+    "category": "concerts",
+    "date": "2026-06-29",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "КАМЕРАТА Залцбург и духът на Моцарт",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Кралски камерен оркестър на Валония, Белгия",
+    "fullDescription": "Кралски камерен оркестър на Валония, Белгия Понеделник, 29/06/2026г. КАМЕРАТА Залцбург и духът на Моцарт",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-e3785dc1c235",
+    "title": "КАМЕРАТА Залцбург и духът на Моцарт",
+    "category": "culture",
+    "date": "2026-06-30",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "„Кафе Електрик”",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "КАМЕРАТА Залцбург и духът на Моцарт",
+    "fullDescription": "КАМЕРАТА Залцбург и духът на Моцарт Вторник, 30/06/2026г. „Кафе Електрик”",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-12e6087a4502",
+    "title": "„Кафе Електрик”",
+    "category": "culture",
+    "date": "2026-07-01",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "От Кипър към Ирландия",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "„Кафе Електрик”",
+    "fullDescription": "„Кафе Електрик” Сряда, 01/07/2026г. От Кипър към Ирландия",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-04bdf01c1330",
+    "title": "От Кипър към Ирландия",
+    "category": "culture",
+    "date": "2026-07-02",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "The Best of Rock",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "От Кипър към Ирландия",
+    "fullDescription": "От Кипър към Ирландия Четвъртък, 02/07/2026г. The Best of Rock",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-26a32cfb195a",
+    "title": "The Best of Rock",
+    "category": "culture",
+    "date": "2026-07-02",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Летен театър",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "The Best of Rock",
+    "fullDescription": "The Best of Rock Четвъртък, 02/07/2026г. Летен театър",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-74ed036abba5",
+    "title": "100 години Оскар Питърсън",
+    "category": "culture",
+    "date": "2026-07-04",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Лебедово езеро",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "100 години Оскар Питърсън",
+    "fullDescription": "100 години Оскар Питърсън Събота, 04/07/2026г. Лебедово езеро",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-d1010e1ed686",
+    "title": "Лебедово езеро",
+    "category": "concerts",
+    "date": "2026-07-10",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Театрално-музикален продуцентски център",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "Лебедово езеро",
+    "fullDescription": "Лебедово езеро Петък, 10/07/2026г. Театрално-музикален продуцентски център",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-cdbc0ec61551",
+    "title": "\"ТУРАНДОТ\" - ПРЕМИЕРА",
+    "category": "culture",
+    "date": "2026-07-23",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Летен театър",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "\"ТУРАНДОТ\" - ПРЕМИЕРА",
+    "fullDescription": "\"ТУРАНДОТ\" - ПРЕМИЕРА Четвъртък, 23/07/2026г. Летен театър",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-67198a197cf1",
+    "title": "„СНЕЖАНКА И СЕДЕМТЕ ДЖУДЖЕТА“",
+    "category": "concerts",
+    "date": "2026-07-30",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Театрално-музикален продуцентски център",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "„СНЕЖАНКА И СЕДЕМТЕ ДЖУДЖЕТА“",
+    "fullDescription": "„СНЕЖАНКА И СЕДЕМТЕ ДЖУДЖЕТА“ Четвъртък, 30/07/2026г. Театрално-музикален продуцентски център",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  },
+  {
+    "id": "varna-culture-40f46756c1ab",
+    "title": "НОРМА",
+    "category": "concerts",
+    "date": "2026-08-08",
+    "startTime": "19:00",
+    "endTime": null,
+    "location": "Театрално-музикален продуцентски център",
+    "coordinates": {
+      "lat": null,
+      "lng": null
+    },
+    "shortDescription": "НОРМА",
+    "fullDescription": "НОРМА Събота, 08/08/2026г. Театрално-музикален продуцентски център",
+    "images": [
+      "https://varnaculture.bg/media/images/34/c0/VS100.jpg"
+    ],
+    "sourceName": "Varna Culture",
+    "sourceUrl": "https://varnaculture.bg/",
+    "ticketUrl": null,
+    "organizer": "Община Варна - Дирекция култура",
+    "tags": [
+      "Varna Culture",
+      "culture",
+      "varna",
+      "varna-culture",
+      "concerts"
+    ],
+    "badges": [
+      "verified",
+      "foodNearby"
+    ],
+    "status": "published",
+    "importedAt": "2026-05-04T01:37:07.357Z",
+    "image": "https://varnaculture.bg/media/images/34/c0/VS100.jpg",
+    "source": "Varna Culture"
+  }
+]

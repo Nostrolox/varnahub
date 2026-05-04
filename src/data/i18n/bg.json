@@ -81,6 +81,7 @@
     "newEvent": "Ново събитие",
     "newPlace": "Ново място",
     "importEvents": "Импортирай събития",
+    "importingEvents": "Импортиране...",
     "edit": "Редакция",
     "delete": "Изтрий",
     "cancel": "Отказ"
@@ -158,7 +159,8 @@
     "badgesField": "Значки",
     "tagsField": "Тагове",
     "importTitle": "Импорт от Visit Varna",
-    "importHelp": "{count} събития от Visit Varna са включени от последния локален импорт. Стартирай npm run import-events локално, за да обновиш кеша преди deploy."
+    "importHelp": "{count} импортирани събития са кеширани. Бутонът обновява всички официални източници през server-side import API.",
+    "importErrors": "{count} предупреждения от източници. Кешираните събития остават видими."
   },
   "quickFilters": {
     "title": "Търсене и бързи филтри",
@@ -208,9 +210,11 @@
     "favoriteUpdated": "Любимите са обновени.",
     "missingEventFields": "Заглавие, дата и локация са задължителни.",
     "missingPlaceFields": "Име и локация са задължителни.",
-    "importedEvents": "Импортирани са {count} събития от Visit Varna.",
-    "importNoEvents": "Все още няма импортирани събития от Visit Varna. Стартирай npm run import-events локално или въведи събитието ръчно по-долу.",
-    "importNoNewEvents": "Няма нови събития от Visit Varna за импорт.",
+    "importedEvents": "Импортирани са {count} събития.",
+    "importNoEvents": "Все още няма импортирани събития. Опитай по-късно или въведи събитието ръчно по-долу.",
+    "importNoNewEvents": "Няма нови събития за импорт.",
+    "importPartial": "Импортирани са {count} събития с предупреждения от {sources} източник/източника.",
+    "importFailed": "Импортът на събития не успя. Кешираните и ръчните събития остават налични.",
     "accessDenied": "Нямате разрешение за достъп до тази страница.",
     "offlineCache": "Показва се последният локален кеш.",
     "noEvents": "Няма намерени събития.",

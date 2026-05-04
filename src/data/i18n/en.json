@@ -80,7 +80,8 @@
     "savePlace": "Save Place",
     "newEvent": "New Event",
     "newPlace": "New Place",
-    "importEvents": "Import events",
+    "importEvents": "Import Events",
+    "importingEvents": "Importing...",
     "edit": "Edit",
     "delete": "Delete",
     "cancel": "Cancel"
@@ -158,7 +159,8 @@
     "badgesField": "Badges",
     "tagsField": "Tags",
     "importTitle": "Visit Varna import",
-    "importHelp": "{count} Visit Varna events are bundled from the latest local import. Run npm run import-events locally to refresh the cache before deploying."
+    "importHelp": "{count} imported events are cached. The button refreshes all official sources through the server-side import API.",
+    "importErrors": "{count} source import warnings. Cached events are still shown."
   },
   "quickFilters": {
     "title": "Search and quick filters",
@@ -208,9 +210,11 @@
     "favoriteUpdated": "Favorites updated.",
     "missingEventFields": "Title, date, and location are required.",
     "missingPlaceFields": "Name and location are required.",
-    "importedEvents": "Imported {count} Visit Varna events.",
-    "importNoEvents": "No imported Visit Varna events are available yet. Run npm run import-events locally, or paste event details manually below.",
-    "importNoNewEvents": "No new Visit Varna events to import.",
+    "importedEvents": "Imported {count} events.",
+    "importNoEvents": "No imported events are available yet. Try again later or paste event details manually below.",
+    "importNoNewEvents": "No new events to import.",
+    "importPartial": "Imported {count} events with warnings from {sources} source(s).",
+    "importFailed": "Event import failed. Cached and manual events are still available.",
     "accessDenied": "You do not have permission to access this page.",
     "offlineCache": "Showing the last local cache.",
     "noEvents": "No matching events.",
