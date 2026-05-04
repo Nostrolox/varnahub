@@ -1,7 +1,15 @@
 import crypto from "node:crypto";
 
 export const PLACE_IMPORT_REFRESH_MS = 24 * 60 * 60 * 1000;
-export const PLACE_FALLBACK_IMAGE = "/place-placeholder.svg";
+export const PLACE_FALLBACK_IMAGE = "/images/restaurant.jpg";
+
+const PLACE_TYPE_FALLBACK_IMAGES = {
+  restaurant: "/images/restaurant.jpg",
+  cafe: "/images/cafe.jpg",
+  bar: "/images/bar.jpg",
+  fast_food: "/images/fastfood.jpg",
+  other: "/images/restaurant.jpg"
+};
 
 const DEFAULT_LIMIT = Number(process.env.VARNA_PLACE_IMPORT_LIMIT || 36);
 const VARNA_CENTER = { lat: null, lng: null };
@@ -87,9 +95,21 @@ function htmlToLines(html) {
 function absoluteUrl(value, origin) {
   if (!value) return "";
   try {
-    return new URL(decodeHtml(value), origin).href;
+    const cleaned = decodeHtml(value).trim();
+    if (/^(data|blob|javascript):/i.test(cleaned)) return "";
+    return new URL(cleaned, origin).href;
   } catch {
     return "";
+  }
+}
+
+function isValidHttpImageUrl(value) {
+  try {
+    const url = new URL(value);
+    if (!["http:", "https:"].includes(url.protocol)) return false;
+    return !/logo-footer|flag|icon|captcha|blank|pixel|sprite|transparent|placeholder/i.test(url.href);
+  } catch {
+    return false;
   }
 }
 
@@ -115,6 +135,10 @@ function sourceScore(place) {
   if (place.sourceName === "Glovo") return 2;
   if (place.sourceName === "Takeaway") return 1;
   return 0;
+}
+
+function fallbackImageForType(type) {
+  return PLACE_TYPE_FALLBACK_IMAGES[type] || PLACE_TYPE_FALLBACK_IMAGES.other;
 }
 
 function mergeDuplicatePlaces(places) {
@@ -146,11 +170,54 @@ function mergeDuplicatePlaces(places) {
   return [...seen.values()];
 }
 
-function extractImages(html, origin) {
-  const images = [...String(html || "").matchAll(/<img\b[^>]+src=["']([^"']+)["'][^>]*>/gi)]
-    .map((match) => absoluteUrl(match[1], origin))
-    .filter((src) => src && !/logo|flag|icon|captcha|blank|pixel/i.test(src));
-  return [...new Set(images)].slice(0, 3);
+function parseAttributes(tag) {
+  const attrs = {};
+  for (const match of String(tag || "").matchAll(/([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi)) {
+    attrs[match[1].toLowerCase()] = match[2] || match[3] || match[4] || "";
+  }
+  return attrs;
+}
+
+function parseSrcset(value, origin) {
+  return String(value || "")
+    .split(",")
+    .map((part) => part.trim().split(/\s+/)[0])
+    .map((src) => absoluteUrl(src, origin))
+    .filter(isValidHttpImageUrl);
+}
+
+function extractImages(html, origin, { sourceName = "" } = {}) {
+  const candidates = [];
+  const attrPriority = sourceName === "Takeaway"
+    ? ["src", "data-src", "data-lazy", "data-original", "data-image", "srcset", "data-srcset"]
+    : ["data-src", "data-lazy", "data-original", "data-image", "src", "srcset", "data-srcset"];
+
+  for (const match of String(html || "").matchAll(/<img\b[^>]*>/gi)) {
+    const attrs = parseAttributes(match[0]);
+    for (const attr of attrPriority) {
+      if (!attrs[attr]) continue;
+      if (attr.includes("srcset")) {
+        candidates.push(...parseSrcset(attrs[attr], origin));
+      } else {
+        candidates.push(absoluteUrl(attrs[attr], origin));
+      }
+    }
+  }
+
+  for (const match of String(html || "").matchAll(/url\((["']?)([^"')]+)\1\)/gi)) {
+    candidates.push(absoluteUrl(match[2], origin));
+  }
+
+  const ranked = candidates
+    .filter(isValidHttpImageUrl)
+    .sort((a, b) => {
+      if (sourceName === "Tripadvisor") return Number(/photo|media|restaurant|location/i.test(b)) - Number(/photo|media|restaurant|location/i.test(a));
+      if (sourceName === "Glovo") return Number(/stores|products|restaurants|cloudfront|glovo/i.test(b)) - Number(/stores|products|restaurants|cloudfront|glovo/i.test(a));
+      if (sourceName === "Takeaway") return Number(/logo|restaurant|images|thumb/i.test(b)) - Number(/logo|restaurant|images|thumb/i.test(a));
+      return 0;
+    });
+
+  return [...new Set(ranked)].slice(0, 3);
 }
 
 function inferType(text) {
@@ -189,7 +256,12 @@ function normalizePlace(raw) {
   const cuisine = normalizeSpace(raw.cuisine || inferCuisine(`${name} ${raw.shortDescription || ""}`));
   const type = raw.type || inferType(`${name} ${cuisine} ${raw.shortDescription || ""}`);
   const location = normalizeSpace(raw.location || "Varna");
-  const images = raw.images?.length ? raw.images : [raw.imageUrl || PLACE_FALLBACK_IMAGE];
+  const fallbackImage = fallbackImageForType(type);
+  const images = [...(raw.images || []), raw.imageUrl, raw.image]
+    .filter(Boolean)
+    .map((image) => String(image).trim())
+    .filter(isValidHttpImageUrl);
+  const displayImages = images.length ? [...new Set(images)] : [fallbackImage];
   const importedAt = raw.importedAt || new Date().toISOString();
 
   return {
@@ -201,8 +273,8 @@ function normalizePlace(raw) {
     location,
     coordinates: raw.coordinates || VARNA_CENTER,
     shortDescription: normalizeSpace(raw.shortDescription || `${cuisine} place in Varna`),
-    images,
-    image: images[0],
+    images: displayImages,
+    image: displayImages[0],
     rating: raw.rating ?? null,
     reviewsCount: raw.reviewsCount ?? null,
     openingHours: raw.openingHours || null,
@@ -243,7 +315,7 @@ function cleanName(value) {
 
 function parseGlovoText(html, source, url) {
   const text = stripTags(html);
-  const images = extractImages(html, source.origin);
+  const images = extractImages(html, source.origin, { sourceName: source.name });
   const matches = [...text.matchAll(/([A-ZА-Я0-9][A-ZА-Яа-яёЁa-z0-9 '&|./-]{2,72}?)(?:\s+(?:Free|Безплатно|Schedule for [^0-9]+|Насрочване за [^0-9]+|Closed|Затворен|[0-9,.]+\s*(?:€|лв\.?))){1,3}\s*(\d{2,3})%\(([\d+]+)\)/g)];
   const places = matches.map((match) => {
     const name = cleanName(match[1]);
@@ -258,7 +330,7 @@ function parseGlovoText(html, source, url) {
       priceRange: null,
       location: "Varna",
       shortDescription: `${cuisine} from Glovo Varna listings`,
-      images: images.length ? images : [PLACE_FALLBACK_IMAGE],
+      images,
       rating: Number.isFinite(ratingPercent) ? Math.round((ratingPercent / 20) * 10) / 10 : null,
       reviewsCount: Number.isFinite(reviewsCount) ? reviewsCount : null,
       openingHours: /Closed|Затворен/i.test(match[0]) ? "Closed" : null,
@@ -284,7 +356,7 @@ export async function importFromGlovoVarna({ limit = DEFAULT_LIMIT } = {}) {
 
 function parseTakeawayText(html, source, url) {
   const lines = htmlToLines(html);
-  const images = extractImages(html, source.origin);
+  const images = extractImages(html, source.origin, { sourceName: source.name });
   const places = [];
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
@@ -300,7 +372,7 @@ function parseTakeawayText(html, source, url) {
       priceRange: priceRangeFromText(line),
       location: "Varna",
       shortDescription: `${cuisine} listing from Takeaway Varna`,
-      images: images.length ? images : [PLACE_FALLBACK_IMAGE],
+      images,
       rating: null,
       reviewsCount: null,
       openingHours: null,
@@ -326,7 +398,7 @@ export async function importFromTakeawayVarna({ limit = DEFAULT_LIMIT } = {}) {
 
 function parseTripadvisorListings(html, source, url) {
   const lines = htmlToLines(html);
-  const images = extractImages(html, source.origin);
+  const images = extractImages(html, source.origin, { sourceName: source.name });
   const places = [];
 
   for (let i = 0; i < lines.length - 4; i += 1) {
@@ -346,7 +418,7 @@ function parseTripadvisorListings(html, source, url) {
       priceRange: priceRangeFromText(cuisineLine),
       location: "Varna",
       shortDescription: `${cuisine || "Restaurant"} listed on Tripadvisor Varna`,
-      images: images.length ? images : [PLACE_FALLBACK_IMAGE],
+      images,
       rating,
       reviewsCount: Number(reviewsMatch[1].replace(/,/g, "")),
       openingHours,

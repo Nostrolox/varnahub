@@ -17,6 +17,13 @@ const DATE_FILTERS = ["all", "today", "tonight", "week", "weekend"];
 const SORTS = ["popularity", "date", "rating"];
 const QUICK_FILTERS = ["today", "tonight", "weekend", "free", "paid", "concerts", "festivals", "nightlife", "culture", "food", "near"];
 const BADGES = ["verified", "free", "paid", "ticketRequired", "familyFriendly", "outdoor", "foodNearby", "popular"];
+const EVENT_FALLBACK_IMAGE = "/event-placeholder.svg";
+const PLACE_TYPE_FALLBACK_IMAGES = {
+  restaurants: "/images/restaurant.jpg",
+  cafes: "/images/cafe.jpg",
+  bars: "/images/bar.jpg",
+  "street food": "/images/fastfood.jpg"
+};
 
 const eventMarker = L.divIcon({ className: "hub-pin hub-pin-event", html: "<span></span>", iconAnchor: [13, 13], iconSize: [26, 26] });
 const placeMarker = L.divIcon({ className: "hub-pin hub-pin-place", html: "<span></span>", iconAnchor: [13, 13], iconSize: [26, 26] });
@@ -76,7 +83,35 @@ function makeKey(type, id) {
 }
 
 function safeImage(src) {
-  return src || "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1400&q=80";
+  return isDisplayImage(src) ? src : EVENT_FALLBACK_IMAGE;
+}
+
+function isDisplayImage(src) {
+  const value = String(src || "").trim();
+  return /^https?:\/\//i.test(value) || value.startsWith("/");
+}
+
+function getPlaceFallbackImage(placeOrType) {
+  const category = typeof placeOrType === "string" ? appPlaceCategory(placeOrType) : appPlaceCategory(placeOrType?.category || placeOrType?.type);
+  return PLACE_TYPE_FALLBACK_IMAGES[category] || PLACE_TYPE_FALLBACK_IMAGES.restaurants;
+}
+
+function safePlaceImages(place) {
+  const fallback = getPlaceFallbackImage(place);
+  const candidates = safeArray(place?.images?.length ? place.images : place?.image)
+    .filter(isDisplayImage)
+    .filter((image) => image !== "/place-placeholder.svg");
+  return candidates.length ? candidates : [fallback];
+}
+
+function safePlaceImage(place) {
+  return safePlaceImages(place)[0];
+}
+
+function handleImageFallback(event, fallback) {
+  if (event.currentTarget.dataset.fallbackApplied === "true") return;
+  event.currentTarget.dataset.fallbackApplied = "true";
+  event.currentTarget.src = fallback;
 }
 
 function safeArray(value) {
@@ -197,7 +232,7 @@ function normalizePlace(place) {
   const location = typeof place.location === "object" ? place.location : { bg: place.location || "Varna", en: place.location || "Varna" };
   const description = place.description || place.shortDescription || "";
   const descriptionValue = typeof description === "object" ? description : { bg: description, en: description };
-  const images = place.images?.length ? place.images : [place.image];
+  const images = safePlaceImages({ ...place, category });
   return {
     ...place,
     type: category,
@@ -210,7 +245,7 @@ function normalizePlace(place) {
     lng: Number(place.coordinates?.lng ?? place.lng ?? VARNA_CENTER.lng),
     openingHours: place.openingHours || "10:00-23:00",
     images,
-    image: safeImage(place.image || images?.[0] || "/place-placeholder.svg"),
+    image: images[0],
     rating: place.rating ?? 0,
     badges: place.badges || ["verified"],
     tags: place.tags || [category, textValue(cuisine), place.priceRange, place.sourceName].filter(Boolean),
@@ -1176,7 +1211,7 @@ function DetailsView(props) {
       <button className="ghost-button self-start" onClick={onBack} type="button">{t("actions.back")}</button>
       <article className="detail-panel">
         <div className="detail-media">
-          <img alt="" src={safeImage(item.image)} />
+          <img alt="" onError={(imageEvent) => handleImageFallback(imageEvent, isEvent ? EVENT_FALLBACK_IMAGE : getPlaceFallbackImage(item))} src={isEvent ? safeImage(item.image) : safePlaceImage(item)} />
           <div className="detail-overlay">
             <BadgeList badges={isEvent ? item.badges : item.badges || []} t={t} />
             <h1>{isEvent ? l(item.title) : item.name}</h1>
@@ -1244,7 +1279,7 @@ function EventExtraSections({ event, gallery, l, t }) {
   return (
     <>
       <SectionTitle kicker={t("details.gallery")} title={t("details.gallery")} />
-      <div className="gallery-grid">{gallery.map((image) => <img alt="" key={image} src={safeImage(image)} />)}</div>
+      <div className="gallery-grid">{gallery.map((image) => <img alt="" key={image} onError={(imageEvent) => handleImageFallback(imageEvent, EVENT_FALLBACK_IMAGE)} src={safeImage(image)} />)}</div>
       <div className="detail-extra-grid">
         <InfoPanel title={t("details.organizer")}>
           <p><strong>{event.organizer?.name || "-"}</strong></p>
@@ -1484,7 +1519,7 @@ function EventCard(props) {
   return (
     <article className={compact ? "event-card compact" : "event-card"}>
       <button className="card-open" onClick={() => openItem("event", event.id)} type="button">
-        <img alt="" src={safeImage(event.image)} />
+        <img alt="" onError={(imageEvent) => handleImageFallback(imageEvent, EVENT_FALLBACK_IMAGE)} src={safeImage(event.image)} />
         <span className="card-badge">{t(`categories.${event.category}`)}</span>
         <div className="card-body">
           <div><h2>{l(event.title) || t("misc.untitledEvent")}</h2><p>{l(event.location) || t("misc.locationTba")}</p></div>
@@ -1509,7 +1544,7 @@ function PlaceCard(props) {
   return (
     <article className={compact ? "place-card compact" : "place-card"}>
       <button className="card-open" onClick={() => openItem("place", place.id)} type="button">
-        <img alt="" src={safeImage(place.image)} />
+        <img alt="" onError={(imageEvent) => handleImageFallback(imageEvent, getPlaceFallbackImage(place))} src={safePlaceImage(place)} />
         <div className="card-body">
           <div className="place-title-row"><div><h2>{place.name || t("misc.unnamedPlace")}</h2><p>{l(place.cuisine)}</p></div><strong>{place.priceRange || "$"}</strong></div>
           <p className="description-line">{l(place.description) || t("misc.noDescription")}</p>
