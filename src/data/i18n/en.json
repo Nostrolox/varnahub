@@ -80,6 +80,7 @@
     "savePlace": "Save Place",
     "newEvent": "New Event",
     "newPlace": "New Place",
+    "importEvents": "Import events",
     "edit": "Edit",
     "delete": "Delete",
     "cancel": "Cancel"
@@ -104,6 +105,7 @@
     "reviews": "reviews",
     "newRating": "New",
     "source": "Source",
+    "officialPage": "Official page",
     "ends": "Ends"
   },
   "auth": {
@@ -152,8 +154,11 @@
     "latField": "Latitude",
     "lngField": "Longitude",
     "openingHoursField": "Opening hours",
+    "sourceUrlField": "Source URL",
     "badgesField": "Badges",
-    "tagsField": "Tags"
+    "tagsField": "Tags",
+    "importTitle": "Visit Varna import",
+    "importHelp": "{count} Visit Varna events are bundled from the latest local import. Run npm run import-events locally to refresh the cache before deploying."
   },
   "quickFilters": {
     "title": "Search and quick filters",
@@ -203,6 +208,9 @@
     "favoriteUpdated": "Favorites updated.",
     "missingEventFields": "Title, date, and location are required.",
     "missingPlaceFields": "Name and location are required.",
+    "importedEvents": "Imported {count} Visit Varna events.",
+    "importNoEvents": "No imported Visit Varna events are available yet. Run npm run import-events locally, or paste event details manually below.",
+    "importNoNewEvents": "No new Visit Varna events to import.",
     "accessDenied": "You do not have permission to access this page.",
     "offlineCache": "Showing the last local cache.",
     "noEvents": "No matching events.",

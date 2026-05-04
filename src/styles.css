@@ -1024,6 +1024,16 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.admin-import-panel {
+  align-items: center;
+  grid-template-columns: 1fr auto;
+}
+
+.admin-import-panel p {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
 .admin-form .primary-action {
   grid-column: 1 / -1;
 }
@@ -1152,6 +1162,7 @@ img {
   .saved-columns,
   .info-grid,
   .detail-extra-grid,
+  .admin-import-panel,
   .admin-form {
     grid-template-columns: 1fr;
   }

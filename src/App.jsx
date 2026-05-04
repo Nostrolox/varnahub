@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import importedVisitVarnaEvents from "./data/importedVisitVarnaEvents.json";
 import mockData from "./data/varnaMockData.json";
 import bg from "./data/i18n/bg.json";
 import en from "./data/i18n/en.json";
@@ -138,7 +139,7 @@ function popularityScore(event, accounts, userReviews) {
 
 function defaultEventBadges(event) {
   const badges = new Set(event.badges || []);
-  if (event.source?.toLowerCase().includes("moreto")) badges.add("verified");
+  if (/moreto|visit varna/i.test(event.source || "")) badges.add("verified");
   if (isFreeEvent({ ...event, badges: [...badges] })) badges.add("free");
   if (!badges.has("free")) badges.add("paid");
   if (event.ticket?.link) badges.add("ticketRequired");
@@ -199,12 +200,16 @@ function dedupeEvents(events, language) {
   const seen = new Map();
   const duplicateTargets = new Set(events.map((event) => event.duplicateOf).filter(Boolean));
   for (const event of events) {
-    const naturalKey = `${slug(textValue(event.title, language))}:${event.date}:${slug(textValue(event.location, language))}`;
+    const naturalKey = naturalEventKey(event, language);
     const key = duplicateTargets.has(event.id) ? event.id : event.duplicateOf || naturalKey;
     const current = seen.get(key);
     if (!current || event.source === "Admin manual" || Number(event.popularityScore || 0) > Number(current.popularityScore || 0)) seen.set(key, event);
   }
   return [...seen.values()];
+}
+
+function naturalEventKey(event, language = "bg") {
+  return `${slug(textValue(event.title, language))}:${event.date || ""}:${slug(textValue(event.location, language))}`;
 }
 
 function dedupeById(items) {
@@ -233,6 +238,7 @@ function createEmptyAdminEvent(todayValue) {
     organizerLink: "",
     ticketPrice: "Free",
     ticketLink: "",
+    sourceUrl: "",
     image: "",
     lat: String(VARNA_CENTER.lat),
     lng: String(VARNA_CENTER.lng),
@@ -340,7 +346,10 @@ export default function App() {
     }
   }, [activeView, user]);
 
-  const seedEvents = useMemo(() => (mockData.events || []).map((event) => normalizeEvent(event, today)), [today]);
+  const seedEvents = useMemo(
+    () => [...(mockData.events || []), ...(importedVisitVarnaEvents || [])].map((event) => normalizeEvent(event, today)),
+    [today]
+  );
   const seedPlaces = useMemo(() => (mockData.places || []).map(normalizePlace), []);
   const events = useMemo(
     () => dedupeEvents([...seedEvents, ...localEvents.map((event) => normalizeEvent(event, today))].filter((event) => !deletedEventIds.includes(event.id)), language),
@@ -529,6 +538,7 @@ export default function App() {
         fullDescription: { bg: safeArray(adminEventDraft.fullDescriptionBg || adminEventDraft.shortDescriptionBg), en: safeArray(adminEventDraft.fullDescriptionEn || adminEventDraft.shortDescriptionEn || adminEventDraft.shortDescriptionBg) },
         organizer: { name: adminEventDraft.organizerName, contact: adminEventDraft.organizerContact, link: adminEventDraft.organizerLink },
         ticket: { price: adminEventDraft.ticketPrice, link: adminEventDraft.ticketLink },
+        sourceUrl: adminEventDraft.sourceUrl,
         images: [safeImage(adminEventDraft.image)],
         image: safeImage(adminEventDraft.image),
         coordinates: { lat: Number(adminEventDraft.lat) || VARNA_CENTER.lat, lng: Number(adminEventDraft.lng) || VARNA_CENTER.lng },
@@ -593,6 +603,7 @@ export default function App() {
       organizerLink: event.organizer?.link || "",
       ticketPrice: event.ticket?.price || "",
       ticketLink: event.ticket?.link || "",
+      sourceUrl: event.sourceUrl || "",
       image: event.image || "",
       lat: String(event.lat),
       lng: String(event.lng),
@@ -639,6 +650,23 @@ export default function App() {
     showToast(t("messages.placeDeleted"));
   }
 
+  function importVisitVarnaEvents() {
+    if (!requireAdmin()) return;
+    const records = (importedVisitVarnaEvents || []).map((event) => normalizeEvent(event, today));
+    if (!records.length) return showToast(t("messages.importNoEvents"));
+
+    const existingKeys = new Set(localEvents.map((event) => naturalEventKey(normalizeEvent(event, today), "bg")));
+    const newRecords = records.filter((record) => {
+      const key = naturalEventKey(record, "bg");
+      if (existingKeys.has(key)) return false;
+      existingKeys.add(key);
+      return true;
+    });
+    setLocalEvents((current) => [...newRecords, ...current]);
+    setDeletedEventIds((current) => current.filter((id) => !records.some((record) => record.id === id)));
+    showToast(newRecords.length ? t("messages.importedEvents").replace("{count}", newRecords.length) : t("messages.importNoNewEvents"));
+  }
+
   const props = {
     accounts,
     activeView,
@@ -654,6 +682,8 @@ export default function App() {
     formatDate,
     isMenuOpen,
     isAdmin,
+    importVisitVarnaEvents,
+    importedEventsCount: (importedVisitVarnaEvents || []).length,
     language,
     l,
     locale,
@@ -1024,6 +1054,12 @@ function EventExtraSections({ event, gallery, l, t }) {
         <InfoPanel title={t("details.schedule")}>
           <div className="schedule-list">{(event.schedule || []).map((item) => <p key={`${item.time}-${l(item)}`}><strong>{item.time}</strong> {l(item)}</p>)}</div>
         </InfoPanel>
+        {event.sourceUrl && (
+          <InfoPanel title={t("details.source")}>
+            <p><strong>{event.source || "Visit Varna"}</strong></p>
+            <a href={event.sourceUrl} rel="noreferrer" target="_blank">{t("details.officialPage")}</a>
+          </InfoPanel>
+        )}
       </div>
     </>
   );
@@ -1119,7 +1155,7 @@ function ProfileView({ authDraft, authMode, events, handleAuthSubmit, l, logout,
 }
 
 function AdminView(props) {
-  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, l, places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
+  const { adminEventDraft, adminPlaceDraft, adminTab, deleteAdminEvent, deleteAdminPlace, editAdminEvent, editAdminPlace, events, importVisitVarnaEvents, importedEventsCount, l, places, saveAdminEvent, saveAdminPlace, setAdminEventDraft, setAdminPlaceDraft, setAdminTab, t } = props;
   return (
     <section className="view-stack">
       <SectionTitle kicker={t("admin.kicker")} title={t("admin.title")} />
@@ -1129,6 +1165,13 @@ function AdminView(props) {
       </div>
       {adminTab === "events" ? (
         <>
+          <div className="form-panel admin-import-panel">
+            <div>
+              <h2>{t("admin.importTitle")}</h2>
+              <p>{t("admin.importHelp").replace("{count}", importedEventsCount || 0)}</p>
+            </div>
+            <button className="primary-action" onClick={importVisitVarnaEvents} type="button">{t("actions.importEvents")}</button>
+          </div>
           <AdminEventForm draft={adminEventDraft} save={saveAdminEvent} setDraft={setAdminEventDraft} t={t} />
           <AdminList deleteItem={deleteAdminEvent} editItem={editAdminEvent} items={events} label={(event) => `${l(event.title)} - ${l(event.location)}`} t={t} />
         </>
@@ -1171,6 +1214,7 @@ function AdminEventForm({ draft, save, setDraft, t }) {
       <LabelInput label={t("details.website")} onChange={(value) => setDraft((d) => ({ ...d, organizerLink: value }))} value={draft.organizerLink} />
       <LabelInput label={t("admin.ticketPriceField")} onChange={(value) => setDraft((d) => ({ ...d, ticketPrice: value }))} value={draft.ticketPrice} />
       <LabelInput label={t("details.ticketLink")} onChange={(value) => setDraft((d) => ({ ...d, ticketLink: value }))} value={draft.ticketLink} />
+      <LabelInput label={t("admin.sourceUrlField")} onChange={(value) => setDraft((d) => ({ ...d, sourceUrl: value }))} value={draft.sourceUrl} />
       <LabelInput label={t("admin.imageField")} onChange={(value) => setDraft((d) => ({ ...d, image: value }))} value={draft.image} />
       <LabelInput label={t("admin.latField")} onChange={(value) => setDraft((d) => ({ ...d, lat: value }))} value={draft.lat} />
       <LabelInput label={t("admin.lngField")} onChange={(value) => setDraft((d) => ({ ...d, lng: value }))} value={draft.lng} />

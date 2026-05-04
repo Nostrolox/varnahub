@@ -80,6 +80,7 @@
     "savePlace": "Запази място",
     "newEvent": "Ново събитие",
     "newPlace": "Ново място",
+    "importEvents": "Импортирай събития",
     "edit": "Редакция",
     "delete": "Изтрий",
     "cancel": "Отказ"
@@ -104,6 +105,7 @@
     "reviews": "ревюта",
     "newRating": "Ново",
     "source": "Източник",
+    "officialPage": "Официална страница",
     "ends": "Край"
   },
   "auth": {
@@ -152,8 +154,11 @@
     "latField": "Ширина",
     "lngField": "Дължина",
     "openingHoursField": "Работно време",
+    "sourceUrlField": "URL на източника",
     "badgesField": "Значки",
-    "tagsField": "Тагове"
+    "tagsField": "Тагове",
+    "importTitle": "Импорт от Visit Varna",
+    "importHelp": "{count} събития от Visit Varna са включени от последния локален импорт. Стартирай npm run import-events локално, за да обновиш кеша преди deploy."
   },
   "quickFilters": {
     "title": "Търсене и бързи филтри",
@@ -203,6 +208,9 @@
     "favoriteUpdated": "Любимите са обновени.",
     "missingEventFields": "Заглавие, дата и локация са задължителни.",
     "missingPlaceFields": "Име и локация са задължителни.",
+    "importedEvents": "Импортирани са {count} събития от Visit Varna.",
+    "importNoEvents": "Все още няма импортирани събития от Visit Varna. Стартирай npm run import-events локално или въведи събитието ръчно по-долу.",
+    "importNoNewEvents": "Няма нови събития от Visit Varna за импорт.",
     "accessDenied": "Нямате разрешение за достъп до тази страница.",
     "offlineCache": "Показва се последният локален кеш.",
     "noEvents": "Няма намерени събития.",
